@@ -3,7 +3,7 @@ Front End para Digi-Tutor. Proyecto del curso Especificación y diseño de Softw
 
 ## Hecho con:
 * Angular 4.
-* Bootrstrap.
+* Bootstrap.
 
 ## Para ejecutar:
 Requiere [Angular-CLI](https://github.com/angular/angular-cli).
