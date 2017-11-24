@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --dt-light-green: #8cc63f;
+    --dt-dark-green: #336600;
+    --dt-light-grey: #999999;
+    --dt-dark-grey: #808080;
+}
+
+@font-face {
+    font-family: "Geomanist";
+    src: url("./assets/Geomanist-Regular.otf") format("opentype");
+}
+
+body {
+    background-color: #e4e4e4;
+    font-family: Geomanist;
+}
