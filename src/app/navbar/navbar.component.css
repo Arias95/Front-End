@@ -1,0 +1,27 @@
+.nav-link {
+    color: #ffffff;
+}
+
+.nav-link:hover {
+    color: var(--dt-dark-grey);
+}
+
+.nav-heading {
+    background-color: var(--dt-light-grey);
+    box-shadow: 0 4px 8px 0 #414141;
+}
+
+.navbar-toggler {
+    border-color: #ffffff;
+}
+
+.navbar-toggler-icon {
+    color: #ffffff;
+}
+
+.affix-nav {
+    position: sticky;
+    top: 0px;
+    z-index: 1; /* Conserva al Navbar encima de las publicaciones 
+                al hacer scroll*/
+}
