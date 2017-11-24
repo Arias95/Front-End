@@ -10,16 +10,6 @@
     text-align: center;
 }
 
-.btn-primary {
-    background-color: var(--dt-light-green);
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: var(--dt-dark-green);
-    border: none;
-}
-
 .affix-card {
     position: sticky;
     top: 110px;

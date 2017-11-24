@@ -12,9 +12,18 @@ export class PublicationComponent implements OnInit {
   @Input() skill: string;
   private visible: boolean;
 
-  constructor() { }
+  constructor() {
+    this.visible = false;
+  }
 
   ngOnInit() {
   }
 
+  toggle() {
+    if (!this.visible) {
+      this.visible = true;
+    } else {
+      this.visible = false;
+    }
+  }
 }

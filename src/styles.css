@@ -39,3 +39,14 @@ body {
     background-color: var(--dt-dark-grey);
     color: #e4e4e4;
 }
+
+/* Botones usados a lo largo de la aplicacion */ 
+.btn-primary {
+    background-color: var(--dt-light-green);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--dt-dark-green);
+    border: none;
+}

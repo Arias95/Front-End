@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PublicationComponent } from './publication/publication.component';
+import { ResourceComponent } from './resource/resource.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PublicationComponent } from './publication/publication.component';
     AppComponent,
     NavbarComponent,
     ProfileComponent,
-    PublicationComponent
+    PublicationComponent,
+    ResourceComponent
   ],
   imports: [
     BrowserModule

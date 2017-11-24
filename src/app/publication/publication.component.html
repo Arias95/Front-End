@@ -1,19 +1,56 @@
 <div class="row">
-  <div class="col">
-      <div class="card">
-          <div class="card-header">
-              {{title}}
-          </div>
-          <div class="card-body">
-              <p>Publicado por: User</p>
-              <p>Descripción: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, perspiciatis
-                  numquam! Ad animi nulla aliquam saepe perspiciatis! Nihil, maxime dignissimos facere
-                  debitis vel rem soluta dolor assumenda, harum ad numquam?</p>
-              <p>Habilidad: Skill</p>
-          </div>
-          <div class="card-footer">
-              2 days ago
-          </div>
-      </div>
-  </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                {{title}}
+            </div>
+            <div class="card-body" (click)="toggle()">
+                <p>
+                    <strong>Publicado por:</strong> {{user}}</p>
+                <p>
+                    <strong>Descripción:</strong> {{desc}}</p>
+                <p>
+                    <strong>Habilidad:</strong> {{skill}}</p>
+            </div>
+            <div class="card-body" [hidden]="!visible">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center">
+                                    <i class="fa fa-thumbs-up fa-3x thumbs" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center">
+                                    213
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center">
+                                    <i class="fa fa-thumbs-down fa-3x thumbs" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center">
+                                    15
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                2 days ago
+            </div>
+        </div>
+    </div>
 </div>
