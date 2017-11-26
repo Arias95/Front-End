@@ -9,6 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PublicationComponent } from './publication/publication.component';
 import { VideoComponent } from './video/video.component';
+import { FileComponent } from './file/file.component';
+import { GithubComponent } from './github/github.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { VideoComponent } from './video/video.component';
     NavbarComponent,
     ProfileComponent,
     PublicationComponent,
-    VideoComponent
+    VideoComponent,
+    FileComponent,
+    GithubComponent
   ],
   imports: [
     BrowserModule,
