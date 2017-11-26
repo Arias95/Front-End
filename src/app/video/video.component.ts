@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent implements OnInit {
-  player: YT.Player;
+  player: YT.Player; // YouTube Component
   @Input()
   private id: string;
 

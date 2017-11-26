@@ -1,8 +1,8 @@
 .like-button {
     opacity: 1;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition:.5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
 }
 
 .like-button:hover {
