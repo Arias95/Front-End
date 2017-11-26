@@ -4,28 +4,43 @@
             <div class="card-header">
                 {{title}}
             </div>
+
+            <!-- METADATA -->
             <div class="card-body" (click)="toggle()">
-                <p>
-                    <strong>Publicado por:</strong> {{user}}</p>
-                <p>
-                    <strong>Descripción:</strong> {{desc}}</p>
-                <p>
-                    <strong>Habilidad:</strong> {{skill}}</p>
+                <div class="row">
+                    <div class="col">
+                        <p>
+                            <strong>Publicado por:</strong> {{user}}</p>
+                        <p>
+                            <strong>Descripción:</strong> {{desc}}</p>
+                        <p>
+                            <strong>Habilidad:</strong> {{skill}}</p>
+                    </div>
+                    <div class="col-lg-2">
+                        <p class="like-button">
+                            <i class="fa fa-caret-square-o-down fa-5x" aria-hidden="true"></i>
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="card-body" [hidden]="!visible">
+
+                <!-- LIKE/DISLIKE -->
                 <div class="row">
                     <div class="col">
                         <div class="row">
                             <div class="col">
-                                <p class="text-center">
-                                    <i class="fa fa-thumbs-up fa-3x thumbs" aria-hidden="true"></i>
+                                <p class="text-center like-button">
+                                    <a (click)="like()">
+                                        <i class="fa fa-thumbs-up fa-2x thumbs" aria-hidden="true"></i>
+                                    </a>
                                 </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p class="text-center">
-                                    213
+                                <p class="text-center like-number">
+                                    {{likes}}
                                 </p>
                             </div>
                         </div>
@@ -33,18 +48,29 @@
                     <div class="col">
                         <div class="row">
                             <div class="col">
-                                <p class="text-center">
-                                    <i class="fa fa-thumbs-down fa-3x thumbs" aria-hidden="true"></i>
+                                <p class="text-center like-button">
+                                    <a (click)="dislike()">
+                                        <i class="fa fa-thumbs-down fa-2x thumbs" aria-hidden="true"></i>
+                                    </a>
                                 </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p class="text-center">
-                                    15
+                                <p class="text-center like-number">
+                                    {{dislikes}}
                                 </p>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT -->
+                <div class="row">
+                    <div class="col">
+                        <app-video
+                        [id]="'t_LJtG2gXSc'"
+                        ></app-video>
                     </div>
                 </div>
             </div>

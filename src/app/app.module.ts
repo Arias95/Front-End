@@ -1,12 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PublicationComponent } from './publication/publication.component';
-import { ResourceComponent } from './resource/resource.component';
+import { VideoComponent } from './video/video.component';
 
 
 @NgModule({
@@ -15,10 +17,12 @@ import { ResourceComponent } from './resource/resource.component';
     NavbarComponent,
     ProfileComponent,
     PublicationComponent,
-    ResourceComponent
+    VideoComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    YoutubePlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
