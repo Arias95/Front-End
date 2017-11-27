@@ -5,6 +5,13 @@
 </div>
 <div class="card comment-box">
   <div class="card-body">
+    <div class="row">
+      <div class="col" *ngIf="comments.length == 0">
+        <p>
+          No hay comentarios para esta publicación.
+        </p>
+      </div>
+    </div>
     <div class="row" *ngFor="let comment of comments">
       <div class="col">
         <app-comment [id]="comment.id" [user]="comment.user" [date]="comment.date" [content]="comment.content"></app-comment>
@@ -12,11 +19,11 @@
     </div>
     <div class="row">
       <div class="col">
-        <textarea class="form-control comment-input" id="comment" rows="3"></textarea>
+        <textarea class="form-control comment-input" id="comment" rows="3" [(ngModel)]="commentBox"></textarea>
       </div>
       <div col-lg-2>
         <p>
-            <button type="button" class="btn btn-primary btn-lg comment-button">Comentar</button>
+            <button type="button" class="btn btn-primary btn-lg comment-button" (click)="comment()">Comentar</button>
         </p>
       </div>
     </div>

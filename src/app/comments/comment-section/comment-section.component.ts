@@ -10,23 +10,22 @@ export class CommentSectionComponent implements OnInit {
   private postId: number;
   @Input()
   private commenter: string;
-  private comments = [
-    {
-      id: 12,
-      user: 'Choco',
-      date: Date(),
-      content: 'Esta mamando perro'
-    },
-    {
-      id: 13,
-      user: 'Alguien que sabe',
-      date: Date(),
-      content: 'Mamando esta usted.'
-    }
-  ];
+  private commentBox: string;
+  private comments = [];
   constructor() { }
 
   ngOnInit() {
   }
 
+  comment () {
+    const commt = {
+      id: 14,
+      user: 'Oscar Arias',
+      date: Date(),
+      content: this.commentBox
+    };
+
+    this.comments.push(commt);
+    this.commentBox = '';
+  }
 }
