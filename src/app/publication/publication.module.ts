@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommentsModule } from '../comments/comments.module';
 
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 
@@ -13,7 +14,8 @@ import { GithubComponent } from './github/github.component';
     imports: [
         CommonModule,
         BrowserAnimationsModule,
-        YoutubePlayerModule
+        YoutubePlayerModule,
+        CommentsModule
     ],
     declarations: [
         PublicationComponent,

@@ -1,0 +1,16 @@
+.comment-box {
+    background: var(--dt-dark-grey);
+    border: none;
+    border-radius: 10px;
+}
+
+.comment-input {
+    border-radius: 10px;
+    border: none;
+}
+
+.comment-button {
+    padding: 32px 16px;
+    border-radius: 10px;
+    margin-right: 1em;
+}
