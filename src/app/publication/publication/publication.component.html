@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                {{title}}
+            </div>
+
+            <!-- METADATA -->
+            <div class="card-body" (click)="toggle()">
+                <div class="row">
+                    <div class="col">
+                        <p>
+                            <strong>Publicado por:</strong> {{user}}</p>
+                        <p>
+                            <strong>Descripción:</strong> {{desc}}</p>
+                        <p>
+                            <strong>Habilidad:</strong> {{skill}}</p>
+                    </div>
+                    <div class="col-lg-2">
+                        <p class="like-button">
+                            <i class="fa fa-caret-square-o-down fa-5x" aria-hidden="true"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" [hidden]="!visible">
+
+                <!-- LIKE/DISLIKE -->
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center like-button">
+                                    <a (click)="like()">
+                                        <i class="fa fa-thumbs-up fa-2x thumbs" aria-hidden="true"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center like-number">
+                                    {{likes}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center like-button">
+                                    <a (click)="dislike()">
+                                        <i class="fa fa-thumbs-down fa-2x thumbs" aria-hidden="true"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center like-number">
+                                    {{dislikes}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT -->
+                <div class="row">
+                    <div class="col">
+                        <app-github
+                        [address]="'URSS-PEDS/Front-End'"></app-github>
+                        <app-video
+                        [id]="'t_LJtG2gXSc'"
+                        ></app-video>
+                    </div>
+                </div>
+
+                <!-- COMMENTS -->
+                <div class="row">
+                    <div class="col">
+                        <app-comment-section
+                        [postId]="22"
+                        [commenter]="'Comentador'"
+                        ></app-comment-section>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                2 days ago
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,23 +19,13 @@ body {
     margin-top: 2em;
 }
 
-/* Estilos de las cards*/
-.card {
-    border: none;
-    box-shadow: 0 4px 8px 0 #414141;
-    margin-bottom: 2em;
-}
-
-.card-header {
+/* Botones usados a lo largo de la aplicacion */ 
+.btn-primary {
     background-color: var(--dt-light-green);
-    color: #ffffff;
+    border: none;
 }
 
-.card-body {
-    background-color: var(--dt-light-grey);
-}
-
-.card-footer {
-    background-color: var(--dt-dark-grey);
-    color: #e4e4e4;
+.btn-primary:hover {
+    background-color: var(--dt-dark-green);
+    border: none;
 }

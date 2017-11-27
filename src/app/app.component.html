@@ -10,8 +10,16 @@
         <div class="col">
           <h2>Pubicaciones recientes</h2>
         </div>
-        <app-publication [title]="'pene22'"></app-publication>
       </div>
+        <div class="row">
+          <div class="col">
+              <app-publication *ngFor="let post of posts"
+              [title]="post.title"
+              [user]="post.user"
+              [desc]="post.desc"
+              [skill]="post.skill"></app-publication>
+          </div>
+        </div>
     </div>
   </div>
 </div>

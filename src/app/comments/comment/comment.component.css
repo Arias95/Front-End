@@ -1,0 +1,12 @@
+.comment {
+    border-radius: 30px;
+    margin-bottom: 1em;
+    background: #c4c4c4;
+    border: none;
+}
+
+.comment-bottom {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: none;
+}
