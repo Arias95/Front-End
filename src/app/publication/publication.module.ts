@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommentsModule } from '../comments/comments.module';
+import { PublicationService } from '../publication.service';
 
 import { YoutubePlayerModule } from 'ngx-youtube-player';
-
 import { PublicationComponent } from './publication/publication.component';
 import { VideoComponent } from './video/video.component';
 import { FileComponent } from './file/file.component';
 import { GithubComponent } from './github/github.component';
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
     imports: [
@@ -21,14 +22,12 @@ import { GithubComponent } from './github/github.component';
         PublicationComponent,
         VideoComponent,
         FileComponent,
-        GithubComponent
+        GithubComponent,
+        FeedComponent
     ],
-    providers: [],
+    providers: [PublicationService],
     exports: [
-        PublicationComponent,
-        VideoComponent,
-        FileComponent,
-        GithubComponent
+        FeedComponent
     ]
 })
 

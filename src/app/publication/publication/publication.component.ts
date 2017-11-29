@@ -8,13 +8,13 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
 })
 export class PublicationComponent implements OnInit {
   // Input es temporal, deberian llegar por REST
-  @Input() title: string;
-  @Input() user: string;
-  @Input() desc: string;
-  @Input() skill: string;
+  @Input() private title: string;
+  @Input() private user: string;
+  @Input() private desc: string;
+  @Input() private skill: string;
 
-  likes: number;
-  dislikes: number;
+  private likes: number;
+  private dislikes: number;
   private visible: boolean;
 
   constructor() {
