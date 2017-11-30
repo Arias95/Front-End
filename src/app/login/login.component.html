@@ -1,3 +1,58 @@
-<p>
-  login works!
-</p>
+<div class="row">
+  <div class="col">
+    <p class="text-center mt-5">
+      <img src="../../assets/logo.svg" alt="Logo de Digi-Tutor" width="500" height="300">
+    </p>
+  </div>
+</div>
+<div class="row" *ngIf="alert">
+  <div class="col">
+    <div class="alert alert-success mx-5" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="alert-heading">Error</h4>
+      <p>El carnet o la contraseña ingresada son incorrectos. Por favor verifique sus datos e intente de nuevo.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="card mx-5 mb-5 p-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <h1>Iniciar sesión</h1>
+            <form>
+              <div class="form-group">
+                <label for="userID">Carné universitario</label>
+                <input type="text" class="form-control" name="userID" id="userID" placeholder="Ingrese su carné universitario vigente" [(ngModel)]="userID">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Ingrese su contraseña en Digi-Tutor"
+                  [(ngModel)]="password">
+              </div>
+              <button type="submit" class="btn btn-primary" routerLink="/home">Iniciar sesión</button>
+            </form>
+          </div>
+          <div class="col">
+            <p>
+              Digi-Tutor es una plataforma en línea pensada para ayudar a conectar estudiantes universitarios y ayudarse en su carrera
+              universitaria.</p>
+            <p>
+              Somos una comunidad de estudiantes ayudando a otros estudiantes en sus labores académicas.
+            </p>
+            <p>
+              Haga una cuenta gratuita ahora mismo para empezar a mejorar sus notas con ayuda de otros estudiantes como vos.
+            </p>
+            <p>
+              <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/register">¡Haga una cuenta gratis haciendo click aquí!</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
