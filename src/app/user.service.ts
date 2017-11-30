@@ -9,8 +9,7 @@ import { UserTest } from './models/usertest';
 
 @Injectable()
 export class UserService {
-  private url = 'http://192.168.0.10:5555/api/Cuenta';
-  // private url = 'http://localhost:3000/users/login';
+  private url = 'http://192.168.0.10:5555/api/Cuenta/login';
   private username: string;
 
   constructor(private http: HttpClient) { }

@@ -1,7 +1,9 @@
 export class Publication {
     id: number;
-    title: string;
-    user: string;
-    desc: string;
-    skill: string;
+    titulo: string;
+    dueno: string;
+    descripcion: string;
+    habilidad: string;
+    fecha: string;
+    estado: boolean;
 }

@@ -34,7 +34,7 @@
                 <input type="password" class="form-control" name="password" id="password" placeholder="Ingrese su contraseña en Digi-Tutor"
                   [(ngModel)]="password">
               </div>
-              <button type="submit" class="btn btn-primary" routerLink="/home">Iniciar sesión</button>
+              <button type="submit" class="btn btn-primary" (click)="login()">Iniciar sesión</button>
             </form>
           </div>
           <div class="col">

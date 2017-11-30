@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { CommentsModule } from '../comments/comments.module';
 import { PublicationService } from '../publication.service';
 
@@ -15,6 +16,7 @@ import { FeedComponent } from './feed/feed.component';
     imports: [
         CommonModule,
         BrowserAnimationsModule,
+        HttpClientModule,
         YoutubePlayerModule,
         CommentsModule
     ],
@@ -31,4 +33,4 @@ import { FeedComponent } from './feed/feed.component';
     ]
 })
 
-export class PublicationModule {}
+export class PublicationModule { }

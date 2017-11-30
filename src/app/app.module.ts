@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { PublicationModule } from './publication/publication.module';
 import { UserService } from './user.service';
 
@@ -28,7 +28,7 @@ import { AddPublicationComponent } from './add-publication/add-publication.compo
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
+    HttpModule,
     PublicationModule,
     AppRoutingModule
   ],

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { PublicationService } from '../../publication.service';
 import { Publication } from '../../models/publication';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-feed',
@@ -10,10 +9,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
+  @Input() private user: string;
   private posts: Publication[];
 
   constructor(
-    private http: HttpClient,
     private publicationService: PublicationService
   ) { }
 
@@ -22,11 +21,10 @@ export class FeedComponent implements OnInit {
   }
 
   getPublications(): void {
-    this.publicationService.getPublications()
-      .subscribe(data => {
-        this.posts = data;
-      }, err => {
-        console.log(err);
-      });
+    this.publicationService.getPublications(this.user)
+      .subscribe(response => {
+        this.posts = response;
+      },
+      err => console.log('Error'));
   }
 }
