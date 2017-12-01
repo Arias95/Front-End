@@ -4,7 +4,6 @@ import { ReportService } from '../../report.service';
 import { Country } from '../../models/country';
 import { University } from '../../models/university';
 import { Skill } from '../../models/skill';
-import { Router } from '@angular/router';
 import { Report } from '../../models/report';
 import { ReportRequest } from '../../models/reportRequest';
 
@@ -33,7 +32,6 @@ export class ReportComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router,
     private reportServ: ReportService
   ) { }
 

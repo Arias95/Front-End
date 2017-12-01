@@ -8,7 +8,7 @@
         <nav class="nav flex-column">
           <a class="nav-link active" href="/admin">Reporte de talento</a>
           <a class="nav-link" href="/addUni">Agregar Universidades</a>
-          <a class="nav-link" href="#">Administrar habilidades</a>
+          <a class="nav-link" href="/addSkills">Administrar habilidades</a>
         </nav>
       </div>
     </div>
@@ -30,15 +30,15 @@
           </div>
         </div>
         <div class="row" *ngIf="alertMax">
-            <div class="col">
-              <div class="alert alert-danger" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlertMax()">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>¡Error!</strong> Solo puede seleccionar un máximo de 4 habilidades.
-              </div>
+          <div class="col">
+            <div class="alert alert-danger" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlertMax()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>¡Error!</strong> Solo puede seleccionar un máximo de 4 habilidades.
             </div>
           </div>
+        </div>
         <div class="row">
           <div class="col">
             <form *ngIf="dataReady">
@@ -58,8 +58,11 @@
               <div class="form-group">
                 <legend>Seleccione habilidades deseadas:</legend>
                 <div class="form-check">
-                  <label class="form-check-label" *ngFor="let skill of Skills">
-                    <input class="form-check-input" type="checkbox" (change)="selectSkill(skill.nombre, $event.target.checked)"> {{skill.nombre}} </label>
+                  <p *ngFor="let skill of Skills">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" (change)="selectSkill(skill.nombre, $event.target.checked)"> {{skill.nombre}}
+                    </label>
+                  </p>
                 </div>
               </div>
               <div class="form-group">
@@ -76,19 +79,30 @@
             <div class="row">
               <div class="col report-box" *ngFor="let report of reports">
                 <h4>Posición: {{report.posicion}}</h4>
-                <p><strong>Nombre del Estudiante:</strong> {{report.nombreEstudiante}}</p>
-                <p><strong>Nota:</strong> {{report.nota}}</p>
-                <p><strong>Reputacion:</strong> {{report.reputacion}}</p>
-                <p><strong>Seguidores:</strong> {{report.totalSeguidor}}</p>
-                <p><strong>Publicaciones realizadas:</strong> {{report.totalPublicacion}}</p>
-                <p><strong>Habilidades:</strong></p>
+                <p>
+                  <strong>Nombre del Estudiante:</strong> {{report.nombreEstudiante}}</p>
+                <p>
+                  <strong>Nota:</strong> {{report.nota}}</p>
+                <p>
+                  <strong>Reputacion:</strong> {{report.reputacion}}</p>
+                <p>
+                  <strong>Seguidores:</strong> {{report.totalSeguidor}}</p>
+                <p>
+                  <strong>Publicaciones realizadas:</strong> {{report.totalPublicacion}}</p>
+                <p>
+                  <strong>Habilidades:</strong>
+                </p>
                 <ul>
                   <li *ngFor="let skill of report.habilidades">{{skill}}</li>
                 </ul>
-                <p><strong>Email principal:</strong> {{report.email1}}</p>
-                <p><strong>Email secundario:</strong> {{report.email2}}</p>
-                <p><strong>Teléfono Móvil:</strong> {{report.teleMovil}}</p>
-                <p><strong>Teléfono Fijo:</strong> {{report.teleFijo}}</p>
+                <p>
+                  <strong>Email principal:</strong> {{report.email1}}</p>
+                <p>
+                  <strong>Email secundario:</strong> {{report.email2}}</p>
+                <p>
+                  <strong>Teléfono Móvil:</strong> {{report.teleMovil}}</p>
+                <p>
+                  <strong>Teléfono Fijo:</strong> {{report.teleFijo}}</p>
               </div>
             </div>
           </div>

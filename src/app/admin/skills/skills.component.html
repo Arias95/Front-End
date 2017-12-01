@@ -1,0 +1,113 @@
+<div class="row m-5">
+  <div class="col-lg-3">
+    <div class="card">
+      <div class="card-header">
+        Navegación
+      </div>
+      <div class="card-body">
+        <nav class="nav flex-column">
+          <a class="nav-link" href="/admin">Reporte de talento</a>
+          <a class="nav-link" href="/addUni">Agregar Universidades</a>
+          <a class="nav-link active" href="/addSkills">Administrar habilidades</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        Administrar Habilidades
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col" *ngIf="alertRequired">
+            <div class="alert alert-danger" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlertRequired()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>¡Error!</strong> Dejó un campo obligatorio en blanco, por favor rellenar todos menos el opcional.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" *ngIf="successSkill">
+            <div class="alert alert-danger" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeSuccess()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>¡Listo!</strong> Habilidad {{name}} agregada satisfactoriamente.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form *ngIf="dataReady">
+              <div class="form-group">
+                <label for="category">Seleccione la categoría</label>
+                <select id="category" name="category" class="form-control" [(ngModel)]="category" (ngModelChange)="categoryChange($event)"
+                  required>
+                  <option *ngFor="let category of categories">{{category.nombre}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="name">Nombre de la habilidad</label>
+                <input type="text" class="form-control" name="name" id="name" [(ngModel)]="name" required>
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="addSkill()">Agregar Habilidad</button>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col" *ngIf="skillsReady">
+            <h2>Habilidades registradas en categoría seleccionada</h2>
+            <ul>
+              <li *ngFor="let skill of skills">{{skill.nombre}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            Agregar una categoría
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col" *ngIf="alertCategoryFailure">
+                <div class="alert alert-danger" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlertCategoryFailure()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>¡Error!</strong> Ya existe una categoría con nombre {{categoryName}}.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col" *ngIf="successCategory">
+                <div class="alert alert-danger" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeSuccessCategory()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>¡Listo!</strong> Categoría {{categoryName}} agregada satisfactoriamente.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <form>
+                  <div class="form-group">
+                    <label for="categoryName">Nombre de la Categoría</label>
+                    <input type="text" class="form-control" name="categoryName" id="categoryName" [(ngModel)]="categoryName" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary" (click)="addCategory()">Agregar Categoría</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

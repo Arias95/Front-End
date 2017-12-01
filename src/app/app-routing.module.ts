@@ -5,13 +5,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReportComponent } from './admin/report/report.component';
 import { AddUniversityComponent } from './admin/add-university/add-university.component';
+import { SkillsComponent } from './admin/skills/skills.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'register' , component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: ReportComponent },
-  { path: 'addUni', component: AddUniversityComponent}
+  { path: 'addUni', component: AddUniversityComponent },
+  { path: 'addSkills', component: SkillsComponent }
 ];
 
 @NgModule({

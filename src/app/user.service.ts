@@ -10,6 +10,8 @@ import { User } from './models/user';
 import { Country } from './models/country';
 import { University } from './models/university';
 import { Skill } from './models/skill';
+import { NewSkill } from './models/new-skill';
+import { Category } from './models/category';
 import { Status } from './models/status';
 
 @Injectable()
@@ -64,6 +66,26 @@ export class UserService {
   getSkills(): Observable<Skill[]> {
     const url = this.rest.URL() + 'Habilidad?tipo=0';
     return this.http.get<Skill[]>(url);
+  }
+
+  getSkillsCat(category: string): Observable<Skill[]> {
+    const url = this.rest.URL() + 'Habilidad?nombreCategoria=' + category;
+    return this.http.get<Skill[]>(url);
+  }
+
+  addSkill(newSkill: NewSkill): Observable<Status[]> {
+    const url = this.rest.URL() + 'Habilidad';
+    return this.http.post<Status[]>(url, newSkill);
+  }
+
+  getCategories(): Observable<Category[]> {
+    const url = this.rest.URL() + 'Habilidad?tipo=1';
+    return this.http.get<Category[]>(url);
+  }
+
+  addCategory(category: string): Observable<Status[]> {
+    const url = this.rest.URL() + 'Habilidad?nombre=' + category;
+    return this.http.post<Status[]>(url, {});
   }
 
   register(newUser: any): Observable<Status> {
