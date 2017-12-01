@@ -26,6 +26,16 @@
             <div class="card-body" [hidden]="!visible">
 
                 <!-- LIKE/DISLIKE -->
+                <div class="row" *ngIf="ratedAlert">
+                    <div class="col">
+                        <div class="alert alert-danger" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <strong>¡Error!</strong> Usted ya calificó esta publicación.
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="row">
@@ -66,23 +76,12 @@
                 </div>
 
                 <!-- CONTENT -->
-                <div class="row">
-                    <div class="col">
-                        <app-github
-                        [address]="'URSS-PEDS/Front-End'"></app-github>
-                        <app-video
-                        [id]="'t_LJtG2gXSc'"
-                        ></app-video>
-                    </div>
-                </div>
+                <app-resource [publicationId]="id"></app-resource>
 
                 <!-- COMMENTS -->
                 <div class="row">
                     <div class="col">
-                        <app-comment-section
-                        [postId]="22"
-                        [commenter]="'Comentador'"
-                        ></app-comment-section>
+                        <app-comment-section [publication]="id"></app-comment-section>
                     </div>
                 </div>
             </div>

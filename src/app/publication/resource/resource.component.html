@@ -1,0 +1,8 @@
+<div class="row" *ngFor="let resource of resources">
+  <div class="col">
+    <app-github *ngIf="resource.ContentType=='link'"
+    [address]="resource.dato"></app-github>
+    <app-video *ngIf="resource.ContentType=='video'"
+    [id]="resource.dato"></app-video>
+  </div>
+</div>

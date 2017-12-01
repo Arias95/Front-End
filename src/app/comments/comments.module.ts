@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommentComponent } from './comment/comment.component';
 import { CommentSectionComponent } from './comment-section/comment-section.component';
+import { CommentService } from './../comment.service';
 
 @NgModule({
     imports: [
@@ -12,7 +13,7 @@ import { CommentSectionComponent } from './comment-section/comment-section.compo
     declarations: [
         CommentComponent,
         CommentSectionComponent],
-    providers: [],
+    providers: [CommentService],
     exports: [
         CommentSectionComponent
     ]

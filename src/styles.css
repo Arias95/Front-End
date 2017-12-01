@@ -11,7 +11,9 @@
 }
 
 body {
-    background-color: #e4e4e4;
+    background: url(./assets/loginscreen.jpg) no-repeat center center fixed;
+    background-size: cover;
+    /*background-color: #e4e4e4;*/
     font-family: Geomanist;
 }
 
