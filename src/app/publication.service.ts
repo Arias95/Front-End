@@ -19,8 +19,6 @@ export class PublicationService {
   }
 
   likePost(id: number, carnet: string): Observable<Status[]> {
-    console.log(id);
-    console.log(carnet);
     const url = this.rest.URL() + 'Publicacion/darlike';
     const reqBody = {
       idPublicacion: id,

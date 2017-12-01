@@ -51,7 +51,7 @@ export class PublicationComponent implements OnInit {
     } else {
       this.rated = true;
       this.likes++;
-      this.publicationServ.likePost(this.id, this.loggedUser);
+      this.publicationServ.likePost(this.id, this.loggedUser).subscribe();
     }
   }
 
@@ -61,7 +61,7 @@ export class PublicationComponent implements OnInit {
     } else {
       this.rated = true;
       this.dislikes++;
-      this.publicationServ.dislikePost(this.id, this.loggedUser);
+      this.publicationServ.dislikePost(this.id, this.loggedUser).subscribe();
     }
   }
 
