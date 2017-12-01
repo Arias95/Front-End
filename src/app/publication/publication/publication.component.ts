@@ -7,7 +7,7 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
   styleUrls: ['./publication.component.css']
 })
 export class PublicationComponent implements OnInit {
-  // Input es temporal, deberian llegar por REST
+  @Input() private id: number;
   @Input() private title: string;
   @Input() private user: string;
   @Input() private desc: string;

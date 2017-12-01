@@ -92,7 +92,6 @@ export class RegisterComponent implements OnInit {
       habilidades: this.selectedSkills
     };
 
-    console.log(newUser);
     this.userService.register(newUser).subscribe(response => {
       this.userService.changeUser(this.userID);
       this.router.navigate(['/home']);

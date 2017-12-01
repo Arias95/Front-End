@@ -27,7 +27,9 @@ import { FeedComponent } from './feed/feed.component';
         GithubComponent,
         FeedComponent
     ],
-    providers: [PublicationService],
+    providers: [
+        PublicationService
+    ],
     exports: [
         FeedComponent
     ]

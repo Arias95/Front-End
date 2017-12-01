@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 import { User } from '../models/user';
@@ -13,7 +14,8 @@ export class ProfileComponent implements OnInit {
   private user: User;
   private isDataAvailable = false;
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -25,6 +27,10 @@ export class ProfileComponent implements OnInit {
 
   getUser(user: string): Promise<User[]> {
     return this.userService.getUserData(user);
+  }
+
+  logout() {
+    this.router.navigate(['']);
   }
 
 }

@@ -6,9 +6,6 @@ import { Publication } from './models/publication';
 
 @Injectable()
 export class PublicationService {
-  headers = new Headers({
-    'Content-Type': 'application/json'
-  });
 
   constructor(
     private http: HttpClient,
@@ -17,8 +14,6 @@ export class PublicationService {
 
   getPublications(carnet: string): Observable<Publication[]> {
     const url = this.rest.URL() + 'Publicacion?carnet=' + carnet;
-    console.log(url);
     return this.http.get<Publication[]>(url);
   }
-
 }
