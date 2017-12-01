@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { PublicationModule } from './publication/publication.module';
+import { AdminModule } from './admin/admin.module';
 import { UserService } from './user.service';
 
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { RestService } from './rest.service';
     FormsModule,
     HttpModule,
     PublicationModule,
+    AdminModule,
     AppRoutingModule
   ],
   providers: [UserService, RestService],
