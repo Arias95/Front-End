@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentsModule } from '../comments/comments.module';
 import { PublicationService } from '../publication.service';
+import { ResourceService } from '../resource.service';
 
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { PublicationComponent } from './publication/publication.component';
@@ -11,6 +12,7 @@ import { VideoComponent } from './video/video.component';
 import { FileComponent } from './file/file.component';
 import { GithubComponent } from './github/github.component';
 import { FeedComponent } from './feed/feed.component';
+import { ResourceComponent } from './resource/resource.component';
 
 @NgModule({
     imports: [
@@ -25,10 +27,12 @@ import { FeedComponent } from './feed/feed.component';
         VideoComponent,
         FileComponent,
         GithubComponent,
-        FeedComponent
+        FeedComponent,
+        ResourceComponent
     ],
     providers: [
-        PublicationService
+        PublicationService,
+        ResourceService
     ],
     exports: [
         FeedComponent

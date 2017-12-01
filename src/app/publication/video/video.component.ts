@@ -7,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class VideoComponent implements OnInit {
   player: YT.Player; // YouTube Component
-  @Input()
-  private id: string;
+  @Input() private id: string;
 
   constructor() { }
 

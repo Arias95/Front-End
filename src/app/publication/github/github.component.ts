@@ -6,8 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./github.component.css']
 })
 export class GithubComponent implements OnInit {
-  @Input()
-  private address: string;
+  @Input() private address: string;
   window: NewWindow;
 
   constructor() { }

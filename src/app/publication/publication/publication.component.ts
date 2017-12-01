@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { trigger, state, transition, style, animate } from '@angular/animations'; // Animaciones
+import { UserService } from '../../user.service';
+import { PublicationService } from '../../publication.service';
 
 @Component({
   selector: 'app-publication',
@@ -14,16 +15,26 @@ export class PublicationComponent implements OnInit {
   @Input() private skill: string;
   @Input() private likes: number;
   @Input() private dislikes: number;
+  @Input() private interes: number;
 
-  private visible: boolean;
+  private loggedUser: string;
 
-  constructor() {
-    this.visible = false;
-    this.likes = 0;
-    this.dislikes = 0;
-  }
+  private visible = false;
+  private rated = false;
+  private ratedAlert = false;
+
+  constructor(
+    private userServ: UserService,
+    private publicationServ: PublicationService
+  ) { }
 
   ngOnInit() {
+    this.userServ.currentUser.subscribe(response => {
+      this.loggedUser = response;
+    });
+    if (this.interes !== 0) {
+      this.rated = true;
+    }
   }
 
   toggle() {
@@ -35,10 +46,26 @@ export class PublicationComponent implements OnInit {
   }
 
   like() {
-    this.likes++;
+    if (this.rated) {
+      this.ratedAlert = true;
+    } else {
+      this.rated = true;
+      this.likes++;
+      this.publicationServ.likePost(this.id, this.loggedUser);
+    }
   }
 
   dislike() {
-    this.dislikes++;
+    if (this.rated) {
+      this.ratedAlert = true;
+    } else {
+      this.rated = true;
+      this.dislikes++;
+      this.publicationServ.dislikePost(this.id, this.loggedUser);
+    }
+  }
+
+  closeAlert() {
+    this.ratedAlert = false;
   }
 }

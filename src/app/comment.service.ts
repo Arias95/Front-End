@@ -18,8 +18,8 @@ export class CommentService {
     return this.http.get<Comment[]>(url);
   }
 
-  postComment(comment: any): Observable<PostComment[]>{
-    const url = this.rest.URL() + 'Publicacion';
+  postComment(comment: any): Observable<PostComment[]> {
+    const url = this.rest.URL() + 'Publicacion/comentar';
     return this.http.post<PostComment[]>(url, comment);
   }
 }
