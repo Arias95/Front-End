@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddPublicationComponent } from './add-publication/add-publication.component';
+import { RestService } from './rest.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { AddPublicationComponent } from './add-publication/add-publication.compo
     PublicationModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService, RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

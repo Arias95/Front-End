@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   private title = 'Digi-Tutor';
+
+  constructor(private userService: UserService) {}
 }

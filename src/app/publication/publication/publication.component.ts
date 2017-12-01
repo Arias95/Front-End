@@ -12,9 +12,9 @@ export class PublicationComponent implements OnInit {
   @Input() private user: string;
   @Input() private desc: string;
   @Input() private skill: string;
+  @Input() private likes: number;
+  @Input() private dislikes: number;
 
-  private likes: number;
-  private dislikes: number;
   private visible: boolean;
 
   constructor() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { User } from '../../app/models/user';
 
@@ -15,7 +16,10 @@ export class LoginComponent implements OnInit {
   private loginInfo: User;
   private alert = false;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -23,7 +27,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.login(this.userID, this.password)
       .subscribe(user => {
-        console.log('Ahora si');
+        this.userService.changeUser(this.userID);
+        this.router.navigate(['/home']);
       }, err => {
         this.alert = true;
       });

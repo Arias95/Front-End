@@ -8,9 +8,9 @@
               <img class="avatar" src="../../assets/avatar.jpg" width="100" height="100" alt="Avatar">
           </div>
           <div class="col">
-              <p>Nombre: Óscar Arias</p>
-              <p>Carné: 1832456501</p>
-              <p>Universidad: Universidad de Costa Rica</p>
+              <p>Nombre: {{user?.nombre + ' ' + user?.apellido}}</p>
+              <p>Carné: {{user?.carnet}}</p>
+              <p>Universidad: {{user?.universidad}}</p>
           </div>
       </div>
       <div class="row">
@@ -27,8 +27,7 @@
       </div>
       <div class="row">
           <div class="col">
-              <p>Reputación: 5%</p>
-              <p>Seguidores: 1917</p>
+              <p>Reputación: {{user?.reputacion}}</p>
           </div>
           <div class="col center-text">
               <p>Mis Apoyos:</p>

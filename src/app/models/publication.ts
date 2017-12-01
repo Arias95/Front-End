@@ -6,4 +6,6 @@ export class Publication {
     habilidad: string;
     fecha: string;
     estado: boolean;
+    likes: number;
+    dislikes: number;
 }

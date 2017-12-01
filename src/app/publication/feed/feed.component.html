@@ -1,6 +1,9 @@
+
 <app-publication *ngFor="let post of posts"
 [title]="post.titulo"
 [user]="post.dueno"
 [desc]="post.descripcion"
-[skill]="post.habilidad">
+[skill]="post.habilidad"
+[likes]="post.likes"
+[dislikes]="post.dislikes">
 </app-publication>

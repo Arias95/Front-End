@@ -11,18 +11,22 @@ import { Publication } from '../../models/publication';
 export class FeedComponent implements OnInit {
   @Input() private user: string;
   private posts: Publication[];
+  private empty = false;
 
   constructor(
     private publicationService: PublicationService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.getPublications();
+    this.getPublications(this.user);
   }
 
-  getPublications(): void {
-    this.publicationService.getPublications(this.user)
+  getPublications(user: string): void {
+    this.publicationService.getPublications(user)
       .subscribe(response => {
+        if (response == null) {
+          this.empty = true;
+        }
         this.posts = response;
       },
       err => console.log('Error'));
