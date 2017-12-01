@@ -7,6 +7,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { RestService } from './rest.service';
 import { User } from './models/user';
+import { Country } from './models/country';
+import { University } from './models/university';
+import { Skill } from './models/skill';
+import { Status } from './models/status';
 
 @Injectable()
 export class UserService {
@@ -18,12 +22,14 @@ export class UserService {
     private rest: RestService
   ) { }
 
+  // ===== LOGIN FUNCTIONS =====
+
   login(id: string, pass: string): Observable<string> {
     const url = this.rest.URL() + 'Cuenta/validate';
     const hash = CryptoJS.SHA256(pass);
     const usrDTO = {
       userID: id,
-      password: pass
+      password: hash.toString(CryptoJS.enc.Base64)
     };
 
     return this.http.post<string>(url, usrDTO);
@@ -36,5 +42,27 @@ export class UserService {
 
   changeUser(user: string) {
     this.loggedUser.next(user);
+  }
+
+  // ===== REGISTER FUNCTIONS =====
+
+  getCountries(): Observable<Country[]> {
+    const url = this.rest.URL() + 'Universidad';
+    return this.http.get<Country[]>(url);
+  }
+
+  getUniversities(country: string): Observable<University[]> {
+    const url = this.rest.URL() + 'Universidad?pais=' + country;
+    return this.http.get<University[]>(url);
+  }
+
+  getSkills(): Observable<Skill[]> {
+    const url = this.rest.URL() + 'Habilidad?tipo=0';
+    return this.http.get<Skill[]>(url);
+  }
+
+  register(newUser: any): Observable<Status> {
+    const url = this.rest.URL() + 'Cuenta/register';
+    return this.http.post<Status>(url, newUser);
   }
 }
