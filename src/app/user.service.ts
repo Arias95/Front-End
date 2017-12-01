@@ -51,6 +51,11 @@ export class UserService {
     return this.http.get<Country[]>(url);
   }
 
+  addCountry(name: string): Observable<Status[]> {
+    const url = this.rest.URL() + 'Universidad?pais=' + name;
+    return this.http.post<Status[]>(url, {});
+  }
+
   getUniversities(country: string): Observable<University[]> {
     const url = this.rest.URL() + 'Universidad?pais=' + country;
     return this.http.get<University[]>(url);
