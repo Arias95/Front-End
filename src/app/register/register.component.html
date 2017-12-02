@@ -5,6 +5,42 @@
         </p>
     </div>
 </div>
+<div class="row" *ngIf="nameAlert">
+    <div class="col">
+        <div class="alert alert-success mx-5" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeNameAlert()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="alert-heading">Error</h4>
+            <p>Ingresó un nombre usuario que ya existe en el sistema, intente con uno nuevo.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="passwordAlert">
+    <div class="col">
+        <div class="alert alert-success mx-5" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closePasswordAlert()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="alert-heading">Error</h4>
+            <p>La contraseña ingresada y su confirmación no coinciden.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="requiredAlert">
+    <div class="col">
+        <div class="alert alert-success mx-5" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeRequiredAlert()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="alert-heading">Error</h4>
+            <p>Dejó campos obligatorios sin rellenar, por favor rellene los faltantes.
+            </p>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col">
         <div class="card mx-5 mb-5 p-3">
@@ -69,13 +105,21 @@
                                 <input type="password" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Ingrese su contraseña en Digi-Tutor"
                                     [(ngModel)]="pwdConfirm" required>
                             </div>
+                            <div class="form-group">
+                                <label for="bio">Cuéntenos más sobre usted. Ingrese una bio: (Opcional)</label>
+                                <p>
+                                    <textarea id="bio" name="bio" rows="4" cols="50" [(ngModel)]="bio"></textarea>
+                                </p>
+                            </div>
                             <div class="form-group" *ngIf="dataSkillReady">
                                 <legend>Seleccione sus habilidades:</legend>
                                 <small id="skillHelp" class="form-text text-muted">Puede seleccionar más de 1.</small>
                                 <div class="form-check">
-                                    <label class="form-check-label" *ngFor="let skill of Skills">
-                                        <input class="form-check-input" type="checkbox" (change)="selectSkill(skill.nombre, $event.target.checked)"> {{skill.nombre}}
-                                    </label>
+                                    <p *ngFor="let skill of Skills">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" (change)="selectSkill(skill.nombre, $event.target.checked)"> {{skill.nombre}}
+                                        </label>
+                                    </p>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary" (click)="register()">Registrarse</button>

@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddPublicationComponent } from './add-publication/add-publication.component';
 import { RestService } from './rest.service';
+import { RegisterAdmiComponent } from './register-admi/register-admi.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { RestService } from './rest.service';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AddPublicationComponent
+    AddPublicationComponent,
+    RegisterAdmiComponent
   ],
   imports: [
     BrowserModule,

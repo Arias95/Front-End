@@ -3,6 +3,7 @@ import { UserService } from '../../user.service';
 import { UniversityService } from '../../university.service';
 import { Country } from '../../models/country';
 import { NewUni } from '../../models/new-university';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-university',
@@ -10,6 +11,7 @@ import { NewUni } from '../../models/new-university';
   styleUrls: ['./add-university.component.css']
 })
 export class AddUniversityComponent implements OnInit {
+  private currentUser: string;
   private alert = false;
   private dataReady = false;
   private success = false;
@@ -23,11 +25,15 @@ export class AddUniversityComponent implements OnInit {
 
   constructor(
     private userServ: UserService,
-    private uniServ: UniversityService
+    private uniServ: UniversityService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.getCountries();
+    this.userServ.currentUser.subscribe(response => {
+      this.currentUser = response;
+    });
   }
 
   getCountries() {
@@ -80,5 +86,17 @@ export class AddUniversityComponent implements OnInit {
 
   closeAlert() {
     this.alert = false;
+  }
+
+  report() {
+    this.router.navigate(['/admin']);
+  }
+
+  addUniAdmin() {
+    this.router.navigate(['/addUni']);
+  }
+
+  addSkills() {
+    this.router.navigate(['/addSkills']);
   }
 }

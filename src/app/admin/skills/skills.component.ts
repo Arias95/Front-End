@@ -3,6 +3,7 @@ import { UserService } from '../../user.service';
 import { Category } from '../../models/category';
 import { NewSkill } from '../../models/new-skill';
 import { Skill } from '../../models/skill';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-skills',
@@ -22,7 +23,8 @@ export class SkillsComponent implements OnInit {
   private categoryName: string;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -90,5 +92,17 @@ export class SkillsComponent implements OnInit {
 
   closeAlertCategoryFailure() {
     this.alertCategoryFailure = false;
+  }
+
+  report() {
+    this.router.navigate(['/admin']);
+  }
+
+  addUni() {
+    this.router.navigate(['/addUni']);
+  }
+
+  addSkills() {
+    this.router.navigate(['/addSkills']);
   }
 }

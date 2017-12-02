@@ -6,6 +6,7 @@ import { University } from '../../models/university';
 import { Skill } from '../../models/skill';
 import { Report } from '../../models/report';
 import { ReportRequest } from '../../models/reportRequest';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-report',
@@ -13,6 +14,7 @@ import { ReportRequest } from '../../models/reportRequest';
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
+  private currentUser: string;
   private Countries: Country[];
   private Universities: University[];
   private Skills: Skill[];
@@ -32,12 +34,16 @@ export class ReportComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private reportServ: ReportService
+    private reportServ: ReportService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.getCountries();
     this.getSkills();
+    this.userService.currentUser.subscribe(response => {
+      this.currentUser = response;
+    });
   }
 
   countryChange(newCountry) {
@@ -81,8 +87,12 @@ export class ReportComponent implements OnInit {
       this.selectedSkills.length === 0 || this.amount <= 0) {
       this.alertRequired = true;
     } else {
+      if (this.university === undefined) {
+        this.university = '';
+      }
+
       const req = new ReportRequest();
-      req.nombreAdmi = 'admin';
+      req.nombreAdmi = this.currentUser;
       req.pais = this.country;
       req.univerisdad = this.university;
       req.habilidades = this.selectedSkills;
@@ -90,6 +100,7 @@ export class ReportComponent implements OnInit {
       req.ListaContenido = [];
       req.cantidadResultado = this.amount;
 
+      console.log(req);
       this.reportServ.getReport(req).subscribe(response => {
         this.reports = response;
         this.reportReady = true;
@@ -105,4 +116,15 @@ export class ReportComponent implements OnInit {
     this.alertMax = false;
   }
 
+  report() {
+    this.router.navigate(['/admin']);
+  }
+
+  addUni() {
+    this.router.navigate(['/addUni']);
+  }
+
+  addSkills() {
+    this.router.navigate(['/addSkills']);
+  }
 }

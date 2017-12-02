@@ -33,6 +33,16 @@ export class UserService {
       userID: id,
       password: hash.toString(CryptoJS.enc.Base64)
     };
+    return this.http.post<string>(url, usrDTO);
+  }
+
+  loginAdmin(id: string, pass: string): Observable<string> {
+    const url = this.rest.URL() + 'Cuenta/validateAdmi';
+    const hash = CryptoJS.SHA256(pass);
+    const usrDTO = {
+      userID: id,
+      password: hash.toString(CryptoJS.enc.Base64)
+    };
 
     return this.http.post<string>(url, usrDTO);
   }
@@ -90,6 +100,11 @@ export class UserService {
 
   register(newUser: any): Observable<Status> {
     const url = this.rest.URL() + 'Cuenta/register';
+    return this.http.post<Status>(url, newUser);
+  }
+
+  registerAdmin(newUser: any): Observable<Status> {
+    const url = this.rest.URL() + 'Cuenta/registerAdmi';
     return this.http.post<Status>(url, newUser);
   }
 }

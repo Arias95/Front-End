@@ -19,6 +19,9 @@ export class RegisterComponent implements OnInit {
   private dataReady = false;
   private dataUniReady = false;
   private dataSkillReady = false;
+  private passwordAlert = false;
+  private nameAlert = false;
+  private requiredAlert = false;
 
   private name: string;
   private lname; string;
@@ -31,6 +34,7 @@ export class RegisterComponent implements OnInit {
   private homePhone: string;
   private password: string;
   private pwdConfirm: string;
+  private bio: string;
   private selectedSkills = new Array(0);
 
   constructor(
@@ -78,25 +82,58 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    const newUser = {
-      nombre: this.name,
-      apellido: this.lname,
-      carnet: this.userID,
-      email1: this.email,
-      email2: this.email2,
-      telefonoM: this.mobile,
-      telefonoF: this.homePhone,
-      password: this.password,
-      pais: this.country,
-      universidad: this.university,
-      habilidades: this.selectedSkills
-    };
+    console.log(this.password);
+    console.log(this.pwdConfirm);
+    if (this.password !== this.pwdConfirm) {
+      this.passwordAlert = true;
+    } else if (this.name === undefined || this.lname === undefined || this.country === undefined ||
+          this.university === undefined || this.userID === undefined || this.email === undefined ||
+          this.mobile  === undefined || this.password === undefined || this.pwdConfirm === undefined) {
+        this.requiredAlert = true;
+    } else {
+      if (this.email2 === undefined) {
+        this.email2 = '';
+      }
+      if (this.homePhone === undefined) {
+        this.homePhone = '';
+      }
+      if (this.bio === undefined) {
+        this.bio = '';
+      }
+      const hash = CryptoJS.SHA256(this.password);
+      const newUser = {
+        nombre: this.name,
+        apellido: this.lname,
+        carnet: this.userID,
+        email1: this.email,
+        email2: this.email2,
+        telefonoM: this.mobile,
+        telefonoF: this.homePhone,
+        password: hash.toString(CryptoJS.enc.Base64),
+        pais: this.country,
+        universidad: this.university,
+        descripcion: this.bio,
+        habilidades: this.selectedSkills
+      };
 
-    this.userService.register(newUser).subscribe(response => {
-      this.userService.changeUser(this.userID);
-      this.router.navigate(['/home']);
-    }, err => {
-      console.log(err);
-    });
+      this.userService.register(newUser).subscribe(response => {
+        this.userService.changeUser(this.userID);
+        this.router.navigate(['/home']);
+      }, err => {
+        this.nameAlert = true;
+      });
+    }
+  }
+
+  closePasswordAlert() {
+    this.passwordAlert = false;
+  }
+
+  closeNameAlert() {
+    this.nameAlert = false;
+  }
+
+  closeRequiredAlert() {
+    this.requiredAlert = false;
   }
 }

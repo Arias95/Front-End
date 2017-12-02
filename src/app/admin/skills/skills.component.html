@@ -6,9 +6,10 @@
       </div>
       <div class="card-body">
         <nav class="nav flex-column">
-          <a class="nav-link" href="/admin">Reporte de talento</a>
-          <a class="nav-link" href="/addUni">Agregar Universidades</a>
-          <a class="nav-link active" href="/addSkills">Administrar habilidades</a>
+          <a class="nav-link" (click)="report()" href="javascript:void(0)">Reporte de talento</a>
+          <a class="nav-link" (click)="addUni()" href="javascript:void(0)">Agregar Universidades</a>
+          <a class="nav-link active" (click)="addSkills()" href="javascript:void(0)">Administrar habilidades</a>
+          <a class="nav-link" href="/">Cerrar Sesión</a>
         </nav>
       </div>
     </div>
