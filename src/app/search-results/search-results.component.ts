@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Publication } from '../models/publication';
 import { SearchService } from '../search.service';
+
 
 @Component({
   selector: 'app-search-results',
@@ -14,6 +16,9 @@ export class SearchResultsComponent implements OnInit {
   @Input() private reputacion: number;
   @Input() private seguido: boolean;
   @Input() private habilidades: string[];
+  private posts: Publication[];
+
+  private display = false;
 
   constructor(private searchServ: SearchService) { }
 
@@ -26,4 +31,14 @@ export class SearchResultsComponent implements OnInit {
     });
   }
 
+  displayPosts() {
+    this.searchServ.getPosts(this.carnet).subscribe(response => {
+      this.posts = response;
+      this.display = true;
+    });
+  }
+
+  closePosts() {
+    this.display = false;
+  }
 }

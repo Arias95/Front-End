@@ -24,8 +24,24 @@
           <div class="col-lg-2" *ngIf="!seguido">
             <button type="button" class="btn btn-primary btn-lg mt-4" (click)="follow()">Seguir</button>
           </div>
-          <div class="col-lg-4" *ngIf="seguido">
-            <button type="button" class="btn btn-primary btn-lg mt-4">Ver Publicaciones</button>
+          <div class="col-lg-4" *ngIf="seguido && !display">
+            <button type="button" class="btn btn-primary btn-lg mt-4" (click)="displayPosts()">Ver Publicaciones</button>
+          </div>
+          <div class="col-lg-4" *ngIf="display">
+              <button type="button" class="btn btn-primary btn-lg mt-4" (click)="closePosts()">Cerrar Publicaciones</button>
+            </div>
+        </div>
+        <div class="row" *ngIf="display">
+          <div class="col">
+              <app-publication *ngFor="let post of posts"
+              [id]="post.id"
+              [title]="post.titulo"
+              [user]="post.nombreDueno + ' ' + post.apellidoDueno"
+              [desc]="post.descripcion"
+              [skill]="post.habilidad"
+              [likes]="post.likes"
+              [dislikes]="post.dislikes"
+              [interes]="post.interes"></app-publication>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { RestService } from './rest.service';
 import { SearchResult } from './models/search-result';
 import { Status } from './models/status';
+import { Publication } from './models/publication';
 
 @Injectable()
 export class SearchService {
@@ -26,5 +27,10 @@ export class SearchService {
     };
 
     return this.http.post<Status[]>(url, req);
+  }
+
+  getPosts(carnet: string): Observable<Publication[]> {
+    const url = this.rest.URL() + 'Publicacion?carnetEstudiante=' + carnet;
+    return this.http.get<Publication[]>(url);
   }
 }

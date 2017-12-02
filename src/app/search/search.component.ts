@@ -24,7 +24,6 @@ export class SearchComponent implements OnInit {
   }
 
   search($event) {
-    console.log($event);
     this.searchServ.search($event).subscribe(response => {
       this.results = response;
     });
