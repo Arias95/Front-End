@@ -53,4 +53,9 @@ export class PublicationService {
 
     return this.http.post<Status[]>(url, req);
   }
+
+  post(req: any): Observable<Status[]> {
+    const url = this.rest.URL() + 'Publicacion/contenido';
+    return this.http.post<Status[]>(url, req);
+  }
 }
