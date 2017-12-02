@@ -23,6 +23,7 @@ import { SearchService } from './search.service';
 import { SupportComponent } from './support/support.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { TutoriaComponent } from './tutoria/tutoria.component';
+import { SkillViewComponent } from './skill-view/skill-view.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TutoriaComponent } from './tutoria/tutoria.component';
     SearchResultsComponent,
     SupportComponent,
     MyPostsComponent,
-    TutoriaComponent
+    TutoriaComponent,
+    SkillViewComponent
   ],
   imports: [
     BrowserModule,

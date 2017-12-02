@@ -11,6 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { TutoriaComponent } from './tutoria/tutoria.component';
 import { AddPublicationComponent } from './add-publication/add-publication.component';
+import { SkillViewComponent } from './skill-view/skill-view.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'myPosts', component: MyPostsComponent },
   { path: 'addTutoria', component: TutoriaComponent },
-  { path: 'addPost', component: AddPublicationComponent }
+  { path: 'addPost', component: AddPublicationComponent },
+  { path: 'mySkills', component: SkillViewComponent }
 ];
 
 @NgModule({

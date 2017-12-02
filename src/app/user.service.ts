@@ -14,6 +14,7 @@ import { NewSkill } from './models/new-skill';
 import { Category } from './models/category';
 import { Status } from './models/status';
 import { Publication } from './models/publication';
+import { SkillReport } from './models/skill-report';
 
 @Injectable()
 export class UserService {
@@ -122,5 +123,10 @@ export class UserService {
   postTutoria(request: any): Observable<Status[]> {
     const url = this.rest.URL() + 'Publicacion/tutoria';
     return this.http.post<Status[]>(url, request);
+  }
+
+  getSupports(carnet: string): Observable<SkillReport[]> {
+    const url = this.rest.URL() + 'Cuenta?carnetUsuario=' + carnet;
+    return this.http.get<SkillReport[]>(url);
   }
 }

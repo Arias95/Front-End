@@ -1,0 +1,37 @@
+/* Estilos de las cards*/
+.card {
+    border: none;
+    box-shadow: 0 4px 8px 0 #414141;
+    margin-bottom: 2em;
+}
+
+.card-header {
+    background-color: var(--dt-light-green);
+    color: #ffffff;
+}
+
+.card-body {
+    background-color: var(--dt-light-grey);
+}
+
+.card-footer {
+    background-color: var(--dt-dark-grey);
+    color: #e4e4e4;
+}
+
+.sidebar {
+    position: fixed;
+}
+
+.avatar {
+    border-radius: 25px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.affix-card {
+    position: sticky;
+    top: 110px;
+}

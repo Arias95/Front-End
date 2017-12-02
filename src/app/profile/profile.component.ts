@@ -36,9 +36,13 @@ export class ProfileComponent implements OnInit {
   post() {
     this.router.navigate(['/addPost']);
   }
-  
+
   tutoria() {
     this.router.navigate(['/addTutoria']);
+  }
+
+  mySkills() {
+    this.router.navigate(['/mySkills']);
   }
 
 }
