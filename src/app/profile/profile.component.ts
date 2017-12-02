@@ -33,4 +33,8 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  tutoria() {
+    this.router.navigate(['/addTutoria']);
+  }
+
 }

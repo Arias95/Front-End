@@ -11,4 +11,5 @@ export class Publication {
     interes: number;
     likes: number;
     dislikes: number;
+    esTutoria: boolean;
 }

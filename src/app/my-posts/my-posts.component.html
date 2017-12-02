@@ -1,0 +1,45 @@
+<div class="row" *ngIf="loggedUser === 'default'">
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-success mx-5" role="alert">
+        <h4 class="alert-heading">Error</h4>
+        <p>Esta sección requiere que inicie sesión en digitutor, por favor
+          <a href="/">Inicie sesión</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-navbar *ngIf="loggedUser !== 'default'"></app-navbar>
+<div class="container" *ngIf="loggedUser !== 'default'">
+  <div class="row main-row">
+    <div class="col-lg-4">
+      <app-profile [carnet]="loggedUser"></app-profile>
+    </div>
+    <div class="col">
+      <div class="row" *ngFor="let post of posts">
+        <div class="col">
+          <app-publication *ngIf="!post.esTutoria"
+          [id]="post.id"
+          [title]="post.titulo"
+          [user]="post.nombreDueno + ' ' + post.apellidoDueno"
+          [desc]="post.descripcion"
+          [skill]="post.habilidad"
+          [likes]="post.likes"
+          [dislikes]="post.dislikes"
+          [interes]="post.interes"></app-publication>
+
+          <app-tutoria-post *ngIf="post.esTutoria"
+          [id]="post.id"
+          [title]="post.titulo"
+          [user]="post.nombreDueno + ' ' + post.apellidoDueno"
+          [desc]="post.descripcion"
+          [skill]="post.habilidad"
+          [likes]="post.likes"
+          [dislikes]="post.dislikes"
+          [interes]="post.interes"></app-tutoria-post> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

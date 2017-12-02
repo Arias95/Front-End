@@ -1,14 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../user.service';
 import { PublicationService } from '../../publication.service';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-publication',
-  templateUrl: './publication.component.html',
-  styleUrls: ['./publication.component.css']
+  selector: 'app-tutoria-post',
+  templateUrl: './tutoria.component.html',
+  styleUrls: ['./tutoria.component.css']
 })
-export class PublicationComponent implements OnInit {
+export class TutoriaPostComponent implements OnInit {
   @Input() private id: number;
   @Input() private title: string;
   @Input() private user: string;
@@ -23,6 +22,14 @@ export class PublicationComponent implements OnInit {
   private visible = false;
   private rated = false;
   private ratedAlert = false;
+  private assistanceAlert = false;
+  private ownAlert = false;
+
+  private fecha: string;
+  private hora: string;
+  private lugar: string;
+  private asistentes: number;
+  private costo: string;
 
   constructor(
     private userServ: UserService,
@@ -33,14 +40,18 @@ export class PublicationComponent implements OnInit {
     this.userServ.currentUser.subscribe(response => {
       this.loggedUser = response;
     });
-    if (this.interes !== 0) {
-      this.rated = true;
-    }
   }
 
   toggle() {
     if (!this.visible) {
-      this.visible = true;
+      this.publicationServ.getTutoria(this.id).subscribe(response => {
+        this.fecha = response.fecha;
+        this.hora = response.hora;
+        this.lugar = response.lugar;
+        this.asistentes = response.asistentes;
+        this.costo = response.costo;
+        this.visible = true;
+      });
     } else {
       this.visible = false;
     }
@@ -72,7 +83,25 @@ export class PublicationComponent implements OnInit {
     }
   }
 
+  goTutoria() {
+    this.publicationServ.goTutoria(this.id, this.loggedUser).subscribe(response => {
+      this.asistentes++;
+      this.assistanceAlert = true;
+    }, err => {
+      this.ownAlert = true;
+    });
+  }
+
   closeAlert() {
     this.ratedAlert = false;
   }
+
+  closeAssistance() {
+    this.assistanceAlert = false;
+  }
+
+  closeOwn() {
+    this.ownAlert = true;
+  }
+
 }

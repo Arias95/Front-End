@@ -13,6 +13,7 @@ import { Skill } from './models/skill';
 import { NewSkill } from './models/new-skill';
 import { Category } from './models/category';
 import { Status } from './models/status';
+import { Publication } from './models/publication';
 
 @Injectable()
 export class UserService {
@@ -78,6 +79,11 @@ export class UserService {
     return this.http.get<Skill[]>(url);
   }
 
+  getSkillsUser(carnet: string): Observable<Skill[]> {
+    const url = this.rest.URL() + 'Cuenta/habilidad?carnet=' + carnet;
+    return this.http.get<Skill[]>(url);
+  }
+
   getSkillsCat(category: string): Observable<Skill[]> {
     const url = this.rest.URL() + 'Habilidad?nombreCategoria=' + category;
     return this.http.get<Skill[]>(url);
@@ -106,5 +112,15 @@ export class UserService {
   registerAdmin(newUser: any): Observable<Status> {
     const url = this.rest.URL() + 'Cuenta/registerAdmi';
     return this.http.post<Status>(url, newUser);
+  }
+
+  getPosts(carnet: string): Observable<Publication[]> {
+    const url = this.rest.URL() + 'Publicacion?carnetEstudiante=' + carnet;
+    return this.http.get<Publication[]>(url);
+  }
+
+  postTutoria(request: any): Observable<Status[]> {
+    const url = this.rest.URL() + 'Publicacion/tutoria';
+    return this.http.post<Status[]>(url, request);
   }
 }
