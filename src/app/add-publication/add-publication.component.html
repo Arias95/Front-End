@@ -84,8 +84,8 @@
                   <form>
                     <div class="form-group">
                       <label for="videoID">
-                        <i class="fa fa-youtube" aria-hidden="true"></i> ID del video</label>
-                      <input type="text" class="form-control" name="videoID" id="videoID" placeholder="Ingrese el ID" [(ngModel)]="videoID" required>
+                        <i class="fa fa-youtube" aria-hidden="true"></i> URL del video</label>
+                      <input type="text" class="form-control" name="videoID" id="videoID" placeholder="Ingrese la URL" [(ngModel)]="videoID" required>
                     </div>
                     <button type="submit" class="btn btn-primary" (click)="addVideo()">Adjuntar</button>
                     <button type="submit" class="btn btn-secondary" (click)="closeYouTube()">Cerrar</button>
@@ -98,7 +98,7 @@
                   <form>
                     <div class="form-group">
                       <label for="repoURL">
-                        <i class="fa fa-github" aria-hidden="true"></i> ID del Repositorio</label>
+                        <i class="fa fa-github" aria-hidden="true"></i> URL del Repositorio</label>
                       <input type="text" class="form-control" name="repoURL" id="repoURL" placeholder="Ingrese la URL" [(ngModel)]="repoURL" required>
                     </div>
                     <button type="submit" class="btn btn-primary" (click)="addRepo()">Adjuntar</button>

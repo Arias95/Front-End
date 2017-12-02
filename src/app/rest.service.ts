@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class RestService {
-  private url = 'http://192.168.0.10:5555/api/';
+  private url = 'http://172.18.254.31:5555/api/';
 
   constructor() { }
 

@@ -3,6 +3,8 @@ import { UserService } from '../user.service';
 import { Skill } from '../models/skill';
 import { PublicationService } from '../publication.service';
 
+import * as YouTubeVideoId from 'youtube-video-id';
+
 @Component({
   selector: 'app-add-publication',
   templateUrl: './add-publication.component.html',
@@ -73,7 +75,7 @@ export class AddPublicationComponent implements OnInit {
   addVideo() {
     const resource = {
       tipo: 'video',
-      dato: this.videoID
+      dato: YouTubeVideoId(this.videoID)
     };
     this.recursos.push(resource);
     this.videoID = '';
