@@ -20,6 +20,7 @@ import { SearchComponent } from './search/search.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchService } from './search.service';
+import { SupportComponent } from './support/support.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SearchService } from './search.service';
     RegisterAdmiComponent,
     SearchComponent,
     SearchBoxComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,

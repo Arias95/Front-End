@@ -21,7 +21,7 @@
         <div class="col">
           <h3>Resultados obtenidos</h3>
           <app-search-results *ngFor="let result of results"
-          [loggedUsed]="loggedUser"
+          [loggedUser]="loggedUser"
           [carnet]="result.carnet"
           [nombre]="result.nombre"
           [universidad]="result.universidad"

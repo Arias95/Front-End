@@ -29,8 +29,28 @@ export class SearchService {
     return this.http.post<Status[]>(url, req);
   }
 
-  getPosts(carnet: string): Observable<Publication[]> {
-    const url = this.rest.URL() + 'Publicacion?carnetEstudiante=' + carnet;
-    return this.http.get<Publication[]>(url);
+  getPosts(seguido: string, seguidor: string): Observable<Publication[]> {
+    const url = this.rest.URL() + 'Publicacion/publicacionUsuario';
+    const req = {
+      seguidor: seguidor,
+      seguido: seguido
+    };
+    return this.http.post<Publication[]>(url, req);
+  }
+
+  getApoyos(carnet: string): Observable<number> {
+    const url = this.rest.URL() + 'Cuenta?carnet=' + carnet;
+    return this.http.get<number>(url);
+  }
+
+  darApoyo(dador: string, receptor: string, habilidad: string): Observable<Status[]> {
+    const url = this.rest.URL() + 'Cuenta/apoyo';
+    const req = {
+      carnetDar: dador,
+      carnetRecibir: receptor,
+      habilidad: habilidad
+    };
+    console.log(req);
+    return this.http.post<Status[]>(url, req);
   }
 }
