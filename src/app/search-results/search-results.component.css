@@ -1,0 +1,39 @@
+/* Estilos de las cards*/
+.card {
+    border: none;
+    box-shadow: 0 4px 8px 0 #414141;
+    margin-bottom: 2em;
+}
+
+.card-header {
+    background-color: var(--dt-light-green);
+    color: #ffffff;
+}
+
+.card-body {
+    background-color: var(--dt-light-grey);
+}
+
+.card-footer {
+    background-color: var(--dt-dark-grey);
+    color: #e4e4e4;
+}
+
+.like-button {
+    opacity: 1;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.like-button:hover {
+    opacity: 0.5;
+}
+
+.like-number {
+    font-size: small;
+}
+
+.file-block {
+    margin-bottom: 2em;
+}

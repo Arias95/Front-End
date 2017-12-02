@@ -16,6 +16,10 @@ import { RegisterComponent } from './register/register.component';
 import { AddPublicationComponent } from './add-publication/add-publication.component';
 import { RestService } from './rest.service';
 import { RegisterAdmiComponent } from './register-admi/register-admi.component';
+import { SearchComponent } from './search/search.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchService } from './search.service';
 
 
 @NgModule({
@@ -27,7 +31,10 @@ import { RegisterAdmiComponent } from './register-admi/register-admi.component';
     LoginComponent,
     RegisterComponent,
     AddPublicationComponent,
-    RegisterAdmiComponent
+    RegisterAdmiComponent,
+    SearchComponent,
+    SearchBoxComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +44,7 @@ import { RegisterAdmiComponent } from './register-admi/register-admi.component';
     AdminModule,
     AppRoutingModule
   ],
-  providers: [UserService, RestService],
+  providers: [UserService, RestService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

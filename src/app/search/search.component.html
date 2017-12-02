@@ -1,0 +1,35 @@
+<div class="row" *ngIf="loggedUser === 'default'">
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-success mx-5" role="alert">
+        <h4 class="alert-heading">Error</h4>
+        <p>Esta sección requiere que inicie sesión en digitutor, por favor
+          <a href="/">Inicie sesión</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-navbar *ngIf="loggedUser !== 'default'"></app-navbar>
+<div class="container" *ngIf="loggedUser !== 'default'">
+  <div class="row main-row">
+    <div class="col-lg-4">
+      <app-search-box [loggedUsed]="loggedUser" (searchEmitter)="search($event)"></app-search-box>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <h3>Resultados obtenidos</h3>
+          <app-search-results *ngFor="let result of results"
+          [loggedUsed]="loggedUser"
+          [carnet]="result.carnet"
+          [nombre]="result.nombre"
+          [universidad]="result.universidad"
+          [reputacion]="result.reputacion"
+          [seguido]="result.seguido"
+          [habilidades]="result.habilidades"></app-search-results>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
