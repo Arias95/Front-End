@@ -34,13 +34,22 @@
                 <input type="password" class="form-control" name="password" id="password" placeholder="Ingrese su contraseña en Digi-Tutor"
                   [(ngModel)]="password">
               </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="roleRadio" id="studentRadio" value="estudiante" [(ngModel)]="role" checked> Estudiante
+                </label>
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="roleRadio" id="adminRadio" value="administrador" [(ngModel)]="role"> Administrador
+                </label>
+              </div>
               <button type="submit" class="btn btn-primary" (click)="login()">Iniciar sesión</button>
             </form>
           </div>
           <div class="col">
             <p>
               Digi-Tutor es una plataforma en línea pensada para ayudar a conectar estudiantes universitarios y ayudarse en su carrera
-              universitaria.</p>
+              universitaria.
+            </p>
             <p>
               Somos una comunidad de estudiantes ayudando a otros estudiantes en sus labores académicas.
             </p>

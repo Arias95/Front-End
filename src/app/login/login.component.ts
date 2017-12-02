@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   private userID: string;
   private password: string;
   private loginInfo: User;
+  private role: string;
   private alert = false;
 
   constructor(
@@ -25,14 +26,25 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.userService.login(this.userID, this.password)
+    if (this.role === 'estudiante') {
+      this.userService.login(this.userID, this.password)
+        .subscribe(user => {
+          this.userService.changeUser(this.userID);
+          this.router.navigate(['/home']);
+        }, err => {
+          this.alert = true;
+        });
+    } else {
+      this.userService.loginAdmin(this.userID, this.password)
       .subscribe(user => {
         this.userService.changeUser(this.userID);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/admin']);
       }, err => {
         this.alert = true;
       });
+    }
   }
+
 
   closeAlert() {
     this.alert = false;

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { PublicationModule } from './publication/publication.module';
+import { AdminModule } from './admin/admin.module';
 import { UserService } from './user.service';
 
 import { AppComponent } from './app.component';
@@ -14,6 +15,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddPublicationComponent } from './add-publication/add-publication.component';
 import { RestService } from './rest.service';
+import { RegisterAdmiComponent } from './register-admi/register-admi.component';
+import { SearchComponent } from './search/search.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchService } from './search.service';
+import { SupportComponent } from './support/support.component';
 
 
 @NgModule({
@@ -24,16 +31,22 @@ import { RestService } from './rest.service';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AddPublicationComponent
+    AddPublicationComponent,
+    RegisterAdmiComponent,
+    SearchComponent,
+    SearchBoxComponent,
+    SearchResultsComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     PublicationModule,
+    AdminModule,
     AppRoutingModule
   ],
-  providers: [UserService, RestService],
+  providers: [UserService, RestService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

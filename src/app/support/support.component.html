@@ -1,0 +1,30 @@
+<div class="alert alert-success" *ngIf="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>¡Éxito!</strong> Apoyo dado satisfactoriamente.
+</div>
+<div class="alert alert-danger" *ngIf="failureAlert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeFailure()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Error</strong> Usted ya dio un apoyo a este usuario en la habilidad seleccionada.
+</div>
+<div class="card" *ngIf="!alert">
+  <div class="card-body">
+    <h3>Dar apoyo en una habilidad</h3>
+    <p>
+      <strong>Apoyos disponibles:</strong> {{apoyos}}</p>
+    <form>
+      <div class="form-group">
+        <label for="skill">Seleccione habilidad:</label>
+        <select id="skill" name="skill" class="form-control" [(ngModel)]="habilidad" required>
+          <option *ngFor="let skill of habilidades">{{skill}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="darApoyo()">Dar Apoyo</button>
+      <small class="form-text text-muted">Al dar un apoyo generará una publicación en
+        <a href="https://twitter.com/Digi_Tutor" target="_blank">Twitter</a>.</small>
+    </form>
+  </div>
+</div>

@@ -10,6 +10,8 @@ import { User } from './models/user';
 import { Country } from './models/country';
 import { University } from './models/university';
 import { Skill } from './models/skill';
+import { NewSkill } from './models/new-skill';
+import { Category } from './models/category';
 import { Status } from './models/status';
 
 @Injectable()
@@ -26,6 +28,16 @@ export class UserService {
 
   login(id: string, pass: string): Observable<string> {
     const url = this.rest.URL() + 'Cuenta/validate';
+    const hash = CryptoJS.SHA256(pass);
+    const usrDTO = {
+      userID: id,
+      password: hash.toString(CryptoJS.enc.Base64)
+    };
+    return this.http.post<string>(url, usrDTO);
+  }
+
+  loginAdmin(id: string, pass: string): Observable<string> {
+    const url = this.rest.URL() + 'Cuenta/validateAdmi';
     const hash = CryptoJS.SHA256(pass);
     const usrDTO = {
       userID: id,
@@ -51,6 +63,11 @@ export class UserService {
     return this.http.get<Country[]>(url);
   }
 
+  addCountry(name: string): Observable<Status[]> {
+    const url = this.rest.URL() + 'Universidad?pais=' + name;
+    return this.http.post<Status[]>(url, {});
+  }
+
   getUniversities(country: string): Observable<University[]> {
     const url = this.rest.URL() + 'Universidad?pais=' + country;
     return this.http.get<University[]>(url);
@@ -61,8 +78,33 @@ export class UserService {
     return this.http.get<Skill[]>(url);
   }
 
+  getSkillsCat(category: string): Observable<Skill[]> {
+    const url = this.rest.URL() + 'Habilidad?nombreCategoria=' + category;
+    return this.http.get<Skill[]>(url);
+  }
+
+  addSkill(newSkill: NewSkill): Observable<Status[]> {
+    const url = this.rest.URL() + 'Habilidad';
+    return this.http.post<Status[]>(url, newSkill);
+  }
+
+  getCategories(): Observable<Category[]> {
+    const url = this.rest.URL() + 'Habilidad?tipo=1';
+    return this.http.get<Category[]>(url);
+  }
+
+  addCategory(category: string): Observable<Status[]> {
+    const url = this.rest.URL() + 'Habilidad?nombre=' + category;
+    return this.http.post<Status[]>(url, {});
+  }
+
   register(newUser: any): Observable<Status> {
     const url = this.rest.URL() + 'Cuenta/register';
+    return this.http.post<Status>(url, newUser);
+  }
+
+  registerAdmin(newUser: any): Observable<Status> {
+    const url = this.rest.URL() + 'Cuenta/registerAdmi';
     return this.http.post<Status>(url, newUser);
   }
 }

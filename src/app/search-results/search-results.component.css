@@ -1,3 +1,4 @@
+/* Estilos de las cards*/
 .card {
     border: none;
     box-shadow: 0 4px 8px 0 #414141;
@@ -18,20 +19,21 @@
     color: #e4e4e4;
 }
 
-.nav-link {
-    color: #ffffff;
+.like-button {
+    opacity: 1;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
 }
 
-.active {
-    color: var(--dt-dark-green);
+.like-button:hover {
+    opacity: 0.5;
 }
 
-.report-box {
-    border-radius: 30px;
-    margin: 1em;
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-    background: #c4c4c4;
-    border: none;
+.like-number {
+    font-size: small;
+}
+
+.file-block {
+    margin-bottom: 2em;
 }

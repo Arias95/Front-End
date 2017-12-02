@@ -14,13 +14,20 @@
 <div class="container" *ngIf="loggedUser !== 'default'">
   <div class="row main-row">
     <div class="col-lg-4">
-      <app-profile [carnet]="loggedUser"></app-profile>
+      <app-search-box [loggedUsed]="loggedUser" (searchEmitter)="search($event)"></app-search-box>
     </div>
     <div class="col">
       <div class="row">
         <div class="col">
-          <app-feed *ngIf="feed" [user]="loggedUser"></app-feed>
-          <app-add-publication *ngIf="addPublication"></app-add-publication>
+          <h3>Resultados obtenidos</h3>
+          <app-search-results *ngFor="let result of results"
+          [loggedUser]="loggedUser"
+          [carnet]="result.carnet"
+          [nombre]="result.nombre"
+          [universidad]="result.universidad"
+          [reputacion]="result.reputacion"
+          [seguido]="result.seguido"
+          [habilidades]="result.habilidades"></app-search-results>
         </div>
       </div>
     </div>

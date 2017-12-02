@@ -35,7 +35,8 @@ import { ResourceComponent } from './resource/resource.component';
         ResourceService
     ],
     exports: [
-        FeedComponent
+        FeedComponent,
+        PublicationComponent
     ]
 })
 

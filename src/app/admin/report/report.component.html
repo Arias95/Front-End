@@ -1,3 +1,128 @@
-<p>
-  report works!
-</p>
+<div class="row" *ngIf="currentUser === 'default'">
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-success mx-5" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="alert-heading">Error</h4>
+        <p>Esta sección requiere que inicie sesión en digitutor, por favor
+          <a href="/">Inicie sesión</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row m-5" *ngIf="currentUser !== 'default'">
+  <div class="col-lg-3">
+    <div class="card">
+      <div class="card-header">
+        Navegación
+      </div>
+      <div class="card-body">
+        <nav class="nav flex-column">
+          <a class="nav-link active" (click)="report()" href="javascript:void(0)">Reporte de talento</a>
+          <a class="nav-link" (click)="addUni()" href="javascript:void(0)">Agregar Universidades</a>
+          <a class="nav-link" (click)="addSkills()" href="javascript:void(0)">Administrar habilidades</a>
+          <a class="nav-link" href="/">Cerrar Sesión</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        Generar reporte de talento
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col" *ngIf="alertRequired">
+            <div class="alert alert-danger" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlertRequired()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>¡Error!</strong> Dejó un campo obligatorio en blanco, por favor rellenar todos menos el opcional.
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="alertMax">
+          <div class="col">
+            <div class="alert alert-danger" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlertMax()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>¡Error!</strong> Solo puede seleccionar un máximo de 4 habilidades.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form *ngIf="dataReady">
+              <div class="form-group">
+                <label for="inputState">Seleccione el país</label>
+                <select id="inputState" name="inputState" class="form-control" [(ngModel)]="country" (ngModelChange)="countryChange($event)"
+                  required>
+                  <option *ngFor="let country of Countries">{{country.nombre}}</option>
+                </select>
+              </div>
+              <div class="form-group" *ngIf="dataUniReady">
+                <label for="inputUni">Seleccione la Universidad (Opcional)</label>
+                <select id="inputUni" name="inputUni" class="form-control" [(ngModel)]="university" required>
+                  <option *ngFor="let university of Universities">{{university.nombre}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <legend>Seleccione habilidades deseadas:</legend>
+                <div class="form-check">
+                  <p *ngFor="let skill of Skills">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" (change)="selectSkill(skill.nombre, $event.target.checked)"> {{skill.nombre}}
+                    </label>
+                  </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="number">Cantidad de resultados deseados</label>
+                <input type="number" class="form-control" name="number" id="number" [(ngModel)]="amount" required min=1>
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="generateReport()">Buscar</button>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-4" *ngIf="reportReady">
+          <div class="col">
+            <h2>Resultados</h2>
+            <div class="row">
+              <div class="col report-box" *ngFor="let report of reports">
+                <h4>Posición: {{report.posicion}}</h4>
+                <p>
+                  <strong>Nombre del Estudiante:</strong> {{report.nombreEstudiante}}</p>
+                <p>
+                  <strong>Nota:</strong> {{report.nota}}</p>
+                <p>
+                  <strong>Reputacion:</strong> {{report.reputacion}}</p>
+                <p>
+                  <strong>Seguidores:</strong> {{report.totalSeguidor}}</p>
+                <p>
+                  <strong>Publicaciones realizadas:</strong> {{report.totalPublicacion}}</p>
+                <p>
+                  <strong>Habilidades:</strong>
+                </p>
+                <ul>
+                  <li *ngFor="let skill of report.habilidades">{{skill}}</li>
+                </ul>
+                <p>
+                  <strong>Email principal:</strong> {{report.email1}}</p>
+                <p>
+                  <strong>Email secundario:</strong> {{report.email2}}</p>
+                <p>
+                  <strong>Teléfono Móvil:</strong> {{report.teleMovil}}</p>
+                <p>
+                  <strong>Teléfono Fijo:</strong> {{report.teleFijo}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

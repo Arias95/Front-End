@@ -1,3 +1,4 @@
+/* Estilos de las cards*/
 .card {
     border: none;
     box-shadow: 0 4px 8px 0 #414141;
@@ -18,20 +19,19 @@
     color: #e4e4e4;
 }
 
-.nav-link {
-    color: #ffffff;
+.sidebar {
+    position: fixed;
 }
 
-.active {
-    color: var(--dt-dark-green);
+.avatar {
+    border-radius: 25px;
 }
 
-.report-box {
-    border-radius: 30px;
-    margin: 1em;
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-    background: #c4c4c4;
-    border: none;
+.center-text {
+    text-align: center;
+}
+
+.affix-card {
+    position: sticky;
+    top: 110px;
 }

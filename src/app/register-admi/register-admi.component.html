@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col">
+    <p class="text-center mt-5">
+      <img src="../../assets/logo.svg" alt="Logo de Digi-Tutor" width="500" height="300">
+    </p>
+  </div>
+</div>
+<div class="row" *ngIf="nameAlert">
+  <div class="col">
+    <div class="alert alert-success mx-5" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeNameAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="alert-heading">Error</h4>
+      <p>Ingresó un nombre usuario que ya existe en el sistema, intente con uno nuevo.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="requiredAlert">
+  <div class="col">
+    <div class="alert alert-success mx-5" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeRequiredAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="alert-heading">Error</h4>
+      <p>Todos los campos son obligatorios, por favor rellene los faltantes.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="nameAlert">
+  <div class="col">
+    <div class="alert alert-success mx-5" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeNameAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="alert-heading">Error</h4>
+      <p>Ingresó un nombre usuario que ya existe en el sistema, intente con uno nuevo.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="card mx-5 mb-5 p-3">
+      <div class="card-body">
+        <h1>Registrarse como administrador</h1>
+        <form>
+          <div class="form-group">
+            <label for="userID">Nombre de usuario</label>
+            <input type="text" class="form-control" name="userID" id="userID" placeholder="Ingrese nombre de usuario deseado" [(ngModel)]="userID"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Ingrese su contraseña en Digi-Tutor"
+              [(ngModel)]="password" required>
+          </div>
+          <div class="form-group">
+            <label for="pwdConfirm">Confirmar su contraseña</label>
+            <input type="password" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Ingrese su contraseña en Digi-Tutor"
+              [(ngModel)]="pwdConfirm" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese su correo electrónico principal" [(ngModel)]="email"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Ingrese su nombre" [(ngModel)]="name" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Apellidos</label>
+            <input type="text" class="form-control" name="lname" id="lname" placeholder="Ingrese sus apellidos" [(ngModel)]="lname" required>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="registerAdmin()">Registrarse</button>
+          <button class="btn btn-secundary" routerLink="/">Volver al Inicio</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
