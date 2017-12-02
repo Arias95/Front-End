@@ -19,19 +19,21 @@
     color: #e4e4e4;
 }
 
-.sidebar {
-    position: fixed;
+.like-button {
+    opacity: 1;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
 }
 
-.avatar {
-    border-radius: 25px;
+.like-button:hover {
+    opacity: 0.5;
 }
 
-.center-text {
-    text-align: center;
+.like-number {
+    font-size: small;
 }
 
-.affix-card {
-    position: sticky;
-    top: 110px;
+.file-block {
+    margin-bottom: 2em;
 }

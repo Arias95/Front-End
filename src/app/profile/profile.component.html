@@ -24,7 +24,7 @@
       </div>
       <div class="row">
           <div class="col">
-              <p>Reputación: {{user?.reputacion}}</p>
+              <p>Reputación: {{user?.reputacion}}%</p>
           </div>
           <div class="col center-text">
               <p>Mis Apoyos:</p>
@@ -33,10 +33,10 @@
       <div class="row">
           <div class="col center-text">
               <p>
-                  <button type="button" class="btn btn-primary btn-block">Realizar Publicación</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="post()">Realizar Publicación</button>
               </p>
               <p>
-                  <button type="button" class="btn btn-primary btn-block">Publicar Tutoría</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="tutoria()">Publicar Tutoría</button>
               </p>
           </div>
       </div>

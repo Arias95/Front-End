@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        {{title}}
+      </div>
+
+      <!-- METADATA -->
+      <div class="card-body" (click)="toggle()">
+        <div class="row" *ngIf="assistanceAlert">
+          <div class="col">
+            <div class="alert alert-success" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAssistance()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>¡Listo!</strong> Asistencia registrada satisfactoriamente.
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="ownAlert">
+            <div class="col">
+              <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeOwn()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Error</strong> Usted no puede registrar asistencia a su propia tutoría.
+              </div>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col">
+            <p>
+              <strong>Publicado por:</strong> {{user}}</p>
+            <p>
+              <strong>Descripción:</strong> {{desc}}</p>
+            <p>
+              <strong>Habilidad:</strong> {{skill}}</p>
+          </div>
+          <div class="col-lg-2">
+            <p class="like-button">
+              <i class="fa fa-caret-square-o-down fa-5x" aria-hidden="true"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card-body" [hidden]="!visible">
+
+        <!-- LIKE/DISLIKE -->
+        <div class="row" *ngIf="ratedAlert">
+          <div class="col">
+            <div class="alert alert-danger" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>¡Error!</strong> Usted ya calificó esta publicación.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <p class="text-center like-button">
+                  <a (click)="like()">
+                    <i class="fa fa-thumbs-up fa-2x thumbs" aria-hidden="true"></i>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="text-center like-number">
+                  {{likes}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <p class="text-center like-button">
+                  <a (click)="dislike()">
+                    <i class="fa fa-thumbs-down fa-2x thumbs" aria-hidden="true"></i>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="text-center like-number">
+                  {{dislikes}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>
+              <strong>Fecha:</strong> {{fecha}}
+            </p>
+            <p>
+              <strong>Hora:</strong> {{hora}}
+            </p>
+            <p>
+              <strong>Lugar:</strong> {{lugar}}
+            </p>
+            <p>
+              <strong>Número de asistentes:</strong> {{asistentes}}
+            </p>
+            <p>
+              <strong>Costo:</strong> {{costo}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button type="button" class="btn btn-primary btn-lg btn-block" (click)="goTutoria()">Asistir</button>
+          </div>
+        </div>
+
+        <!-- COMMENTS -->
+        <div class="row">
+          <div class="col">
+            <app-comment-section [publication]="id"></app-comment-section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,70 +1,149 @@
-<div class="row mb-4  ">
-  <div class="col">
-    <div class="card">
-      <div class="card-header">
-        Agregar nueva publicación
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col">
-            <form>
-              <div class="form-group">
-                <label for="inputSkill">Habilidad</label>
-                <select id="inputSkill" class="form-control">
-                  <option selected>Escoja habilidad...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="inputDesc">Descripción</label>
-                <textarea class="form-control" id="inputDesc" rows="3"></textarea>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <button type="button" class="btn btn-primary btn-lg">
-              <i class="fa fa-file" aria-hidden="true"></i> Adjuntar Archivo
-            </button>
-          </div>
-          <div class="col">
-            <button type="button" class="btn btn-primary btn-lg">
-              <i class="fa fa-youtube" aria-hidden="true"></i> Adjuntar Video
-            </button>
-          </div>
-          <div class="col">
-            <button type="button" class="btn btn-primary btn-lg">
-              <i class="fa fa-github" aria-hidden="true"></i> Adjuntar Repositorio
-            </button>
-          </div>
-        </div>
+<div class="row" *ngIf="loggedUser === 'default'">
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-success mx-5" role="alert">
+        <h4 class="alert-heading">Error</h4>
+        <p>Esta sección requiere que inicie sesión en digitutor, por favor
+          <a href="/">Inicie sesión</a>
+        </p>
       </div>
     </div>
   </div>
 </div>
-
-<div class="row">
-  <div class="col">
-    <div class="card">
-      <div class="card-header">
-        Adjuntar archivo
-      </div>
-      <div class="card-body">
-
-      </div>
+<app-navbar *ngIf="loggedUser !== 'default'"></app-navbar>
+<div class="container" *ngIf="loggedUser !== 'default'">
+  <div class="row main-row">
+    <div class="col-lg-4">
+      <app-profile [carnet]="loggedUser"></app-profile>
     </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col">
-    <div class="card">
-      <div class="card-header">
-        Recursos adjuntos
+    <div class="col">
+      <div class="row" *ngIf="success">
+        <div class="col">
+          <div class="alert alert-success mx-5" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeSuccess()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="alert-heading">¡Éxito!</h4>
+            <p>Publicación enviada con éxito.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              Agregar nueva publicación
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <form *ngIf="dataReady">
+                    <div class="form-group">
+                      <label for="title">Título de la publicación</label>
+                      <input type="title" class="form-control" name="title" id="title" placeholder="Ingrese el titulo" [(ngModel)]="title" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputSkill">Habilidad</label>
+                      <select id="inputSkill" name="inputSkill" class="form-control" [(ngModel)]="habilidad">
+                        <option *ngFor="let skill of skills">{{skill}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputDesc">Descripción</label>
+                      <textarea class="form-control" name="inputDesc" id="inputDesc" rows="3" [(ngModel)]="descripcion"></textarea>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-primary" (click)="showFileUpload()">
+                    <i class="fa fa-file" aria-hidden="true"></i> Adjuntar Archivo
+                  </button>
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-primary" (click)="showYouTube()">
+                    <i class="fa fa-youtube" aria-hidden="true"></i> Adjuntar Video
+                  </button>
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-primary" (click)="showGithub()">
+                    <i class="fa fa-github" aria-hidden="true"></i> Adjuntar Repositorio
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-primary btn-lg btn-block mt-3" (click)="post()">Agregar publicación</button>
+                </div>
+              </div>
+              <!-- VIDEO -->
+              <div class="row mt-3" *ngIf="youtube">
+                <div class="col">
+                  <form>
+                    <div class="form-group">
+                      <label for="videoID">
+                        <i class="fa fa-youtube" aria-hidden="true"></i> URL del video</label>
+                      <input type="text" class="form-control" name="videoID" id="videoID" placeholder="Ingrese la URL" [(ngModel)]="videoID" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" (click)="addVideo()">Adjuntar</button>
+                    <button type="submit" class="btn btn-secondary" (click)="closeYouTube()">Cerrar</button>
+                  </form>
+                </div>
+              </div>
+              <!-- GITHUB -->
+              <div class="row mt-3" *ngIf="github">
+                <div class="col">
+                  <form>
+                    <div class="form-group">
+                      <label for="repoURL">
+                        <i class="fa fa-github" aria-hidden="true"></i> URL del Repositorio</label>
+                      <input type="text" class="form-control" name="repoURL" id="repoURL" placeholder="Ingrese la URL" [(ngModel)]="repoURL" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" (click)="addRepo()">Adjuntar</button>
+                    <button type="submit" class="btn btn-secondary" (click)="closeGithub()">Cerrar</button>
+                  </form>
+                </div>
+              </div>
+              <!-- ARCHIVO -->
+              <div class="row mt-3" *ngIf="fileUpload">
+                <div class="col">
+                  <form>
+                    <div class="form-group">
+                      <label for="fileUpload">
+                        <i class="fa fa-file" aria-hidden="true"></i> Seleccione el archivo</label>
+                      <input type="file" class="form-control-file" name="fileUpload" id="fileUpload">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adjuntar</button>
+                    <button type="submit" class="btn btn-secondary" (click)="closeFile()">Cerrar</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              Recursos adjuntos
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col" *ngFor="let recurso of recursos">
+                  <p>
+                    <strong>Tipo: </strong> {{recurso.tipo}}
+                  </p>
+                  <p>
+                    <strong>Dato: </strong> {{recurso.dato}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

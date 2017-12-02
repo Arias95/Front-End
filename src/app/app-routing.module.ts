@@ -8,6 +8,9 @@ import { ReportComponent } from './admin/report/report.component';
 import { AddUniversityComponent } from './admin/add-university/add-university.component';
 import { SkillsComponent } from './admin/skills/skills.component';
 import { SearchComponent } from './search/search.component';
+import { MyPostsComponent } from './my-posts/my-posts.component';
+import { TutoriaComponent } from './tutoria/tutoria.component';
+import { AddPublicationComponent } from './add-publication/add-publication.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,7 +20,10 @@ const routes: Routes = [
   { path: 'admin', component: ReportComponent },
   { path: 'addUni', component: AddUniversityComponent },
   { path: 'addSkills', component: SkillsComponent },
-  { path: 'search', component: SearchComponent }
+  { path: 'search', component: SearchComponent },
+  { path: 'myPosts', component: MyPostsComponent },
+  { path: 'addTutoria', component: TutoriaComponent },
+  { path: 'addPost', component: AddPublicationComponent }
 ];
 
 @NgModule({

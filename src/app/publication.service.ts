@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { RestService } from './rest.service';
 import { Publication } from './models/publication';
+import { Tutoria } from './models/tutoria';
 import { Status } from './models/status';
 
 @Injectable()
@@ -36,5 +37,25 @@ export class PublicationService {
       isLike: false
     };
     return this.http.post<Status[]>(url, reqBody);
+  }
+
+  getTutoria(id: number): Observable<Tutoria> {
+    const url = this.rest.URL() + 'Publicacion?idTutoria=' + id;
+    return this.http.get<Tutoria>(url);
+  }
+
+  goTutoria(id: number, carnet: string): Observable<Status[]> {
+    const url = this.rest.URL() + 'Publicacion/tutoria/matricular';
+    const req = {
+      idPublicacion: id,
+      carnet: carnet
+    };
+
+    return this.http.post<Status[]>(url, req);
+  }
+
+  post(req: any): Observable<Status[]> {
+    const url = this.rest.URL() + 'Publicacion/contenido';
+    return this.http.post<Status[]>(url, req);
   }
 }

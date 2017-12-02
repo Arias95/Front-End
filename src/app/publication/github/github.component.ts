@@ -15,7 +15,7 @@ export class GithubComponent implements OnInit {
   }
 
   openLink() {
-    window.open('https://github.com/' + this.address);
+    window.open(this.address);
   }
 }
 

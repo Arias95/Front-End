@@ -21,7 +21,8 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchService } from './search.service';
 import { SupportComponent } from './support/support.component';
-
+import { MyPostsComponent } from './my-posts/my-posts.component';
+import { TutoriaComponent } from './tutoria/tutoria.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { SupportComponent } from './support/support.component';
     SearchComponent,
     SearchBoxComponent,
     SearchResultsComponent,
-    SupportComponent
+    SupportComponent,
+    MyPostsComponent,
+    TutoriaComponent
   ],
   imports: [
     BrowserModule,

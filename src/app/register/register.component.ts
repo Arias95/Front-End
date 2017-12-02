@@ -82,8 +82,6 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.password);
-    console.log(this.pwdConfirm);
     if (this.password !== this.pwdConfirm) {
       this.passwordAlert = true;
     } else if (this.name === undefined || this.lname === undefined || this.country === undefined ||
@@ -116,6 +114,7 @@ export class RegisterComponent implements OnInit {
         habilidades: this.selectedSkills
       };
 
+      console.log(newUser);
       this.userService.register(newUser).subscribe(response => {
         this.userService.changeUser(this.userID);
         this.router.navigate(['/home']);

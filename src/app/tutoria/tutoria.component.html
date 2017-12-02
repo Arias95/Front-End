@@ -1,0 +1,94 @@
+<div class="row" *ngIf="loggedUser === 'default'">
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-success mx-5" role="alert">
+        <h4 class="alert-heading">Error</h4>
+        <p>Esta sección requiere que inicie sesión en digitutor, por favor
+          <a href="/">Inicie sesión</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-navbar *ngIf="loggedUser !== 'default'"></app-navbar>
+<div class="row" *ngIf="dateError">
+  <div class="col">
+    <div class="alert alert-danger mx-5" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeDate()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="alert-heading">Error</h4>
+      <p>No puede seleccionar una fecha anterior al día de hoy.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="success">
+  <div class="col">
+    <div class="alert alert-success mx-5" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeSuccess()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="alert-heading">¡Éxito!</h4>
+      <p>Tutoría publicada con éxito.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="loggedUser !== 'default'">
+  <div class="row main-row">
+    <div class="col-lg-4">
+      <app-profile [carnet]="loggedUser"></app-profile>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              Publicar Tutoría
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <form *ngIf="dataReady">
+                    <div class="form-group">
+                      <label for="title">Asunto de la Tutoría</label>
+                      <input type="text" class="form-control" name="title" id="title" placeholder="Ingrese el asunto" [(ngModel)]="titulo" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="skill">Seleccione habilidad</label>
+                      <select id="skill" name="skill" class="form-control" [(ngModel)]="habilidad" required>
+                        <option *ngFor="let skill of skills">{{skill}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Descripción de la tutoría</label>
+                      <textarea class="form-control comment-input" id="description" name="description" rows="3" [(ngModel)]="descripcion"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="date">Fecha de la Tutoría</label>
+                      <input type="date" class="form-control" name="date" id="date" [(ngModel)]="fecha" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="time">Hora de la Tutoría</label>
+                      <input type="time" class="form-control" name="time" id="time" [(ngModel)]="hora" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="place">Lugar de la Tutoría</label>
+                      <input type="text" class="form-control" name="place" id="place" placeholder="Ingrese el lugar" [(ngModel)]="lugar" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="cost">Costo de la Tutoría</label>
+                      <input type="text" class="form-control" name="cost" id="cost" placeholder="Ingrese el costo" [(ngModel)]="costo" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" (click)="postTutoria()">Publicar Tutoría</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

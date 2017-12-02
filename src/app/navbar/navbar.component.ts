@@ -21,4 +21,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/search']);
   }
 
+  myPosts() {
+    this.router.navigate(['/myPosts']);
+  }
+
 }

@@ -33,4 +33,12 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  post() {
+    this.router.navigate(['/addPost']);
+  }
+  
+  tutoria() {
+    this.router.navigate(['/addTutoria']);
+  }
+
 }

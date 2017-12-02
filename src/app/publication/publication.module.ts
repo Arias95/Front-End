@@ -13,6 +13,7 @@ import { FileComponent } from './file/file.component';
 import { GithubComponent } from './github/github.component';
 import { FeedComponent } from './feed/feed.component';
 import { ResourceComponent } from './resource/resource.component';
+import { TutoriaPostComponent } from './tutoria/tutoria.component';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { ResourceComponent } from './resource/resource.component';
         FileComponent,
         GithubComponent,
         FeedComponent,
-        ResourceComponent
+        ResourceComponent,
+        TutoriaPostComponent
     ],
     providers: [
         PublicationService,
@@ -36,7 +38,8 @@ import { ResourceComponent } from './resource/resource.component';
     ],
     exports: [
         FeedComponent,
-        PublicationComponent
+        PublicationComponent,
+        TutoriaPostComponent
     ]
 })
 

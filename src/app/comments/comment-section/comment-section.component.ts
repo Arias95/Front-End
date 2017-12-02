@@ -10,7 +10,7 @@ import { Comment } from '../../models/comment';
 })
 export class CommentSectionComponent implements OnInit {
   @Input() private publication: string;
-  private comments: Comment[];
+  private comments = [];
   private commentBox: string;
   private commenter: string;
   private isEmpty = true;
@@ -33,7 +33,7 @@ export class CommentSectionComponent implements OnInit {
     };
 
     this.commentServ.postComment(commt).subscribe(response => {
-      let newComment = new Comment();
+      const newComment = new Comment();
       newComment.nombreDueno = 'Nuevo';
       newComment.apellidoDueno = 'Comentario';
       newComment.fecha = Date();
